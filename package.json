@@ -13,6 +13,7 @@
     "rollup-plugin-node-resolve": "^3.3.0"
   },
   "scripts":{
-    "build": "rollup -c"
+    "build": "rollup -c ./build/rollup.config.js | yarn copy-ie11",
+    "copy-ie11": "cp ./src/ie11-like-support.js ./dist/ie11-like-support.js"
   }
 }
