@@ -18,5 +18,11 @@ export default {
     name: "wavefront",
     file: "dist/wavefront.js",
     format: 'iife'
+  },
+  watch: {
+    chokidar: true,
+    include: 'src/**',
+    exclude: 'node_modules/**',
+    clearScreen: true
   }
 }

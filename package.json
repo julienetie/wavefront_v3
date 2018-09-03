@@ -7,13 +7,14 @@
   "author": "Julien Etienne <j8@protonmail.ch>",
   "license": "MIT",
   "devDependencies": {
+    "chokidar": "^2.0.4",
     "rollup": "^0.64.1",
     "rollup-plugin-buble": "^0.19.2",
     "rollup-plugin-commonjs": "^9.1.5",
     "rollup-plugin-node-resolve": "^3.3.0"
   },
-  "scripts":{
-    "build": "rollup -c ./build/rollup.config.js | yarn copy-ie11",
-    "copy-ie11": "cp ./src/ie11-like-support.js ./dist/ie11-like-support.js"
+  "scripts": {
+    "build": "rollup -c ./build/rollup.config.js",
+    "watch": "http-server ./ & rollup -c ./build/rollup.config.js -w"
   }
 }
