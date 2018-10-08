@@ -20,6 +20,7 @@ Wavefront allows you to:
 - Reference any named component anywhere in the application
 - Use DOM helpers that allow you to create applications without the limitations of Virtual-DOM implementations
 - Render directly to the DOM without caching or extra overhead
+- Manage your application state without the dependency of "this" or ".bind()"
 
 __ 
 ### Separation of Concerns
