@@ -26,7 +26,8 @@ __
 **Wavefront in essence is a view-layer library, design pattern and a discipline based on ES6 and first-class functions**. It uses the concept of **_Declarative Templates_** to separate logic from presentation. Build application logic however you prefer providing there is no explicit logic within your templates. 
 ___
 ### Ultra-fast
-**Wavefront was designed to build real world websites and web applications not theoretical benchmarks challenges**.
+**Wavefront was designed to build real world websites and web applications over passing theoretical benchmarks challenges**.
+Because there is not intermediate overhead it is expected to perform faster than most if not all virtual-DOM based view-layer libraries. 
 ___
 ### A Comprehensive DOM Solution
 - _Abstract from the DOM_ TBA
