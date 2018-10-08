@@ -1,6 +1,6 @@
 {
   "name": "wavefront",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Wavefront",
   "main": "dist/wavefront.js",
   "jsnext:main": "dist/wavefront.js",

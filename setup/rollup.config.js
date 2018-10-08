@@ -17,7 +17,7 @@ export default {
   output:{
     name: "wavefront",
     file: "dist/wavefront.js",
-    format: 'iife'
+    format: 'es'
   },
   watch: {
     chokidar: true,
