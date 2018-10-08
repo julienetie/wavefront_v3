@@ -1,11 +1,15 @@
 {
-  "name": "wavefront_v3",
-  "version": "0.0.1",
-  "description": "Wavefront version 3",
-  "main": "index.js",
-  "repository": "git@github.com:julienetie/wavefront_v3.git",
+  "name": "wavefront",
+  "version": "0.1.0",
+  "description": "Wavefront",
+  "main": "dist/wavefront.js",
+  "jsnext:main": "dist/wavefront.js",
+  "repository": "git@github.com:julienetie/wavefront.git",
   "author": "Julien Etienne <j8@protonmail.ch>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/julienetie/wavefront/issues"
+  },
   "devDependencies": {
     "chokidar": "^2.0.4",
     "rollup": "^0.64.1",
@@ -14,8 +18,8 @@
     "rollup-plugin-node-resolve": "^3.3.0"
   },
   "scripts": {
-    "build": "rollup -c ./build/rollup.config.js",
-    "watch": "http-server ./ | rollup -c ./build/rollup.config.js -w"
+    "build": "rollup -c ./setup/rollup.config.js",
+    "watch": "http-server ./ | rollup -c ./setup/rollup.config.js -w"
   },
   "dependencies": {
     "fastdom": "^1.0.8"
