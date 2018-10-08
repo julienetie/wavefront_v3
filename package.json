@@ -15,6 +15,9 @@
   },
   "scripts": {
     "build": "rollup -c ./build/rollup.config.js",
-    "watch": "http-server ./ & rollup -c ./build/rollup.config.js -w"
+    "watch": "http-server ./ | rollup -c ./build/rollup.config.js -w"
+  },
+  "dependencies": {
+    "fastdom": "^1.0.8"
   }
 }

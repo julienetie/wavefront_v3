@@ -1,34 +1,208 @@
 import store from './store';
-const {isArray} = Array;
-const isFirstUpperCase = string => string[0].toUpperCase() === string[0];
-const isFirstAlpha = string => string[0].match(/^[a-z0-9]+$/i);
+import { 
+    fastDOM, 
+    hasDuplicate, 
+    hypenatedToCamelCase, 
+    createFragment,
+    isFirstUpperCase,
+    isFirstAlpha
+} from './helpers';
+const { isArray } = Array;
+
 /** 
- * Converts a hypenated string into camel-case
- * @param {string}
- * @return {string} Camel-cased string. 
+ * Optimised reads.
+ * @param {Function} callback.  
+ * @return {number} job reference. 
  */
-const hypenatedToCamelCase = string => {
-	const transfored = string.replace(/-([a-z])/g, g => g[1].toUpperCase()).replace(/-/g,'');
-	return transfored[0].toLowerCase() + transfored.slice(1);
-}
-const hasDuplicate = function(data) {
-    let counts = [];
-    for (var i = 0; i <= data.length; i++) {
-        if (counts[data[i]] === undefined) {
-            counts[data[i]] = 1;
+const read = callback => fastDOM.measure(() => callback());
+
+/** 
+ * Optimised writes.
+ * @param {Function} callback.  
+ * @return {number} job reference. 
+ */
+const write = callback => fastDOM.mutate(() => callback());
+
+/** 
+ * Kills a scheduled job.
+ * @param {number} ref - job reference. 
+ */
+const kill = ref => fastDOM.clear(ref);
+
+/** 
+ * Get the nested selector for each element of an array.
+ * @param {Array} elementArray.
+ * @param {string} selector.
+ * @returns {Array} new element array. 
+ */
+const queryEach = (elementArray, selector) =>
+    elementArray.map(element => element.querySelector(selector));
+
+/** 
+ * Get the nested matching selectors for each element of an array.
+ * @param{Array} elementArray.
+ * @param{string} selector.
+ * @returns{Array} new element array. 
+ */
+const queryEachAll = (elementArray, selector) =>
+    elementArray.map(element => element.querySelectorAll(selector));
+
+/** 
+ * Get the matching ancestor for each element in an array.
+ * @param{Array} elementArray.
+ * @param{string} selector.
+ * @returns{Array} new element array. 
+ */
+const eachClosest = (elementArray, selector) =>
+    elementArray.map(element => element.closest(selector));
+
+
+/** 
+ * Get children as an Array.
+ * @returns {Array} new element array. 
+ */
+const children = element => Array.from(element.children);
+
+/** 
+ * Get childNode as an Array.
+ * @returns {Array} new element array. 
+ */
+const childNodes = element => Array.from(element.childNodes);
+
+/** 
+ * querySelectorAll as an Array
+ * @param {string} selector.
+ * @returns {Array} new element array. 
+ */
+const queryAll = (element, selector) => Array.from(element.querySelectorAll(selector));
+
+/** 
+ * Get siblings Array
+ * @returns {Array} new element array. 
+ */
+const siblings = element => Array.from(element.parentElement.children)
+    .filter(child => child !== element);
+
+/** 
+ * Get siblings Key Entries
+ * @returns {Array} new element array. 
+ */
+const siblingsKeys = element => Array.from(element.parentElement.children)
+    .reduce((acc, child, i) => {
+        if (child !== element) {
+            acc.push([i, child]);
+        }
+        return acc;
+    }, []);
+
+/** 
+ * Get specific ancestor by generation.
+ * @param {number} level - the generation by depth.
+ * @returns {Object} element. 
+ */
+const ancestor = (element, level) => {
+    let count = 0;
+    const getParent = node => {
+        count++;
+        const parent = node.parentElement;
+        if (count === level) {
+            return parent;
         } else {
-            return true;
+            return getParent(parent);
         }
     }
-    return false;
+    return getParent(element);
 }
+
 /** 
- * Creates a document fragment from a given DOM string.
+ * @author Julien Etienne. 
+ * {@link https://github.com/julienetie}.
+ * @param {Object} target - Target object to aquire properties of sources.
+ * @param {...Object|...String} sources - The objects or strings to be assigned.
+ * @return {Object} The target object.
  */
-const createFragment = DOMstring => document.createRange().createContextualFragment(DOMstring);
+const aquire = (target, ...sources) => {
+    const sourcesLength = sources.length;
+    for (let i = 0; i < sourcesLength; i++) {
+        const source = sources[i];
+        if (typeof source === 'object' || typeof source === 'string') {
+            const keys = Object.keys(source);
+            const keysLength = keys.length;
+            for (let j = 0; j < keysLength; j++) {
+                const key = keys[j];
+                target[key] = source[key];
+            }
+        } else {
+            return target;
+        }
+    }
+    return target;
+}
+
+/** 
+ * Assign styles by object sources.
+ * @param {...Object} sources - A list of objects to be assigned.
+ */
+const style = (element, ...sources) => void aquire(element.style, ...sources);
 
 
+/**
+ * Add or remove a data attribute
+ */
+const swap = (element, dataKey, state) => {
+    const key = hypenatedToCamelCase(dataKey);
+    return state ? element.dataset[key] = '' :
+        delete element.dataset[key];
+};
 
+/**
+ * Add or remove a data attribute
+ */
+const toggle = (element, dataKey) => {
+    const key = hypenatedToCamelCase(dataKey);
+    return element.dataset[key] === '' ? delete element.dataset[key] :
+        element.dataset[key] = '';
+};
+
+/** 
+ * Cycles throught an array of values infinitely to set as a dataset value.
+ */
+const cycle = (element, dataKey, values) => {
+    let index = 0;
+    return () => {
+        console.log('index', index)
+        element.dataset[hypenatedToCamelCase(dataKey)] = values[index];
+
+        if (index < values.length - 1) {
+            index++;
+
+        } else {
+            index = 0;
+        }
+
+    }
+}
+
+/** 
+ * Gracefully transition the zIndex of an element.
+ * @param {Object} style - The style transformations to apply. 
+ * @param {number} zIndex - The elevation level by z-index.
+ * @callback {Function} callback - Transition end callback.
+ */
+/*const elevate = (element, style, zIndex, callback) => {
+    element.addEventListener("transitionend", element => {
+        // 2. update zIndex 
+        write(() => {
+            aquire(element.style, { zIndex })
+            // 3. Action callback                
+            callback(element);
+
+            // remove event listener.???
+        });
+    }, false);
+    // 1. Set style.
+    write(() => void aquire(element.style, style));
+}*/
 
 
 /** 
@@ -37,48 +211,32 @@ const createFragment = DOMstring => document.createRange().createContextualFragm
  * @returns {DocumentFragment}
  */
 const wave = (strings, ...tags) => {
+    const namesAsDataAttributes = store.config.namesAsDataAttributes;
+    const dataNamePrefix = store.config.dataNamePrefix;
+    const dataNamePrefixIndexLength = dataNamePrefix  !== null ? dataNamePrefix.length + 6 : 5;
 
-// 	const tagsLog = tags.reduce((acc, tag, i) =>{
-// 		if(typeof tag === 'object'){
-// 			acc.elements[i] = tag.element; 
-// 		}
-// 		if(typeof tag === 'string'){
-// 			acc.strings[i] = tag; 
-// 		}
-// 		if(tag instanceof Element){
-// 			acc.elements[i] = tag; 
-// 		}
-// 		if(isArray(tag)){
-// 			// deal with array
-// 		}
-// 		return acc;
-// 	},{
-// 		elements: {},
-// 		strings: {}
-// 	});
-// 
-// console.log(tagsLog)
-
-	console.log('strings.raw', strings.raw)
     const DOMstring = strings.raw.reduce((acc, value, i, data) => {
         let tag = tags[i];
-         if(tag instanceof Element){
-		 	acc.elements[i] = tag; 
-		 	tag = '<div id="_WaveTag__' + i + '"></div>';
-		 }else if(typeof tag === 'object'){
-		 	acc.elements[i] = tag.element; 
-			tag = '<div id="_WaveTag__' + i + '"></div>';
-		 }
+        if (tag instanceof Element) {
+            acc.elements[i] = tag;
+            tag = '<div id="_WaveTag__' + i + '"></div>';
+        } else if (isArray(tag)) {
+            const collection = document.createDocumentFragment();
+            const list = tag.map(value => {
+                return (wave `${value}`);
+            });
+            collection.append(...list);
+            acc.elements[i] = collection;
+            tag = '<div id="_WaveTag__' + i + '"></div>';
+        }
         acc.preSting.push(value + (tag === undefined ? '' : tag));
         return acc;
     }, {
-    	preSting: [],
-    	elements: {}
+        preSting: [],
+        elements: {}
     });
 
     DOMstring.preSting = DOMstring.preSting.join('');
-
-    console.log('DOMstring', DOMstring)
 
     const componentNames = DOMstring.preSting.split('<')
         .map((value, i) => i === 0 ? value : '<' + value)
@@ -91,12 +249,12 @@ const wave = (strings, ...tags) => {
             return hasOpenQuote && hasOpenDoubleQuote;
         })
         .filter(valueToClean => {
-        	const value = valueToClean.split('>')[0];
+            const value = valueToClean.split('>')[0];
 
-        	if (value.indexOf('>') > 1 && value.indexOf('>') < 4) { return false; }
+            if (value.indexOf('>') > 1 && value.indexOf('>') < 4) { return false; }
             const tagParts = value.split(' ');
             if (tagParts.length === 1) { return false; }
-            
+
             const startingPart = tagParts[1];
             if (startingPart.length === 0) { return false; }
             return isFirstUpperCase(startingPart) && isFirstAlpha(startingPart);
@@ -116,101 +274,78 @@ const wave = (strings, ...tags) => {
     if (hasDuplicate(componentNames)) {
         throw Error('Duplicate component names');
     }
-
     // Replace component names with data attributes. 
     const prep = componentNames.reduce((acc, name) => {
-        const pattern = new RegExp(name, 'g');
-        const dataName = 'data-component-' + name.toLowerCase();
+        const nameLowerCase = name.toLowerCase();
+        const pattern = new RegExp(name);
+        const dataName = dataNamePrefix === null ? 'data-' + nameLowerCase : `data-${dataNamePrefix}-${nameLowerCase}`;
+        console.log('dataName', dataName)
         acc.DOMstring = acc.DOMstring.replace(pattern, dataName);
         acc.dataNames.push(dataName);
         return acc;
     }, { DOMstring: DOMstring.preSting, dataNames: [] });
 
-
     const html = createFragment(prep.DOMstring);
+    const els = DOMstring.elements;
 
-    // console.log('html', html)
-    //
-    // const elementsLength = DOMstring.length;
-    // for(let i = 0; i < tagsLength; i++){
-    // 	const element = html.querySelector('#_WaveTag_' + i);
-    // 	if()
-    // }
-    const els = DOMstring.elements
-    console.log('els', els)
-    Object.entries(els).map(entry =>{
-    	const [key, element] = entry;
-    	const index = parseInt(key);
-    	const elementToReplace = html.querySelector('#_WaveTag__' + key)
-    	 
-
-    	const isNotObject = element instanceof Element;
-
-    	elementToReplace
-    	 .replaceWith(element);
+    Object.entries(els).map(entry => {
+        const [key, element] = entry;
+        const index = parseInt(key);
+        const elementToReplace = html.querySelector('#_WaveTag__' + key);
+        const isNotObject = element instanceof Element;
+        elementToReplace.replaceWith(element);
     })
 
     const firstElementChild = html.firstElementChild;
     const parentName = componentNames[0] || '';
 
-   const componentElements = prep.dataNames.reduce((acc, value, i) => {
+    const componentElements = prep.dataNames.reduce((acc, value, i) => {
+        console.log('dataNamePrefixIndexLength', dataNamePrefixIndexLength)
+        const hypenated = value.slice(dataNamePrefixIndexLength);
+        console.log('hypenated', hypenated)
         const name = hypenatedToCamelCase(componentNames[i]);
-       	const element = html.querySelector(`[${value}]`);
-        store.components[name] = {
-        	name,
-        	element,
-        	parent: firstElementChild,
-        	parentName,
-        	string: () => element.outerHTML
-        };
+        const element = html.querySelector(`[${value}]`);
+
+        if (store.config.namesAsDataAttributes === true || (isArray(store.config.namesAsDataAttributes) && store.config.namesAsDataAttributes
+                .some(value => value === name || value === hypenated))) {} else {
+            element.removeAttribute(value);
+        }
+
+        store.components[name] = element;
         acc[name] = element;
         return acc;
-    },{});
+    }, {});
 
-    return {
-        name: parentName,
-        element: firstElementChild,
-        components: componentElements,
-        string: () => firstElementChild.outerHTML
-    }
+    return firstElementChild
 }
 
-const append = (parent, ...children) =>{
-	const childElements = children.map(child => {
-		if(child instanceof Element){
-			return child;
-		}
-		if(typeof child === 'object' && child.element instanceof Element){
-			return child.element;
-		}
-		return child; // Will throw an error.
-	});
-	parent.append(...childElements);
-}
-
-/*
-
-<div>${HTMLString}</div>    // HTML String 
-<div>${Node}</div>          // single node
-<div>${NodeList}</div>      // NodeList or collection 
-or()
-loop()
-
-
-<div>${Array of single values}</div>
-
-const element =  someComponent.element;
-const {componentName1, componentName2} =  someComponent.components();
-const {class1, class2} =  someComponent.class();  
-const {id1, id2} =  someComponent.id('id1', 'id2');  
-const {data-name1, data-name2} =  someComponent.data('name1','name2');  
-
-
-*/
-
+/** 
+ * @param {string} strings - String parts of the template literal.
+ * @returns {Object} - Element.
+ */
+const stringToWave = DOMString => wave `${DOMString}`;
 
 export default {
     wave,
+    stringToWave,
     components: store.components,
-    append
+    read,
+    write,
+    kill,
+    queryEach,
+    queryEachAll,
+    eachClosest,
+    children,
+    childNodes,
+    queryAll,
+    siblings,
+    siblingsKeys,
+    ancestor,
+    style,
+    aquire,
+    swap,
+    toggle,
+    cycle,
+    config: config => aquire(store.config, config)
+
 };

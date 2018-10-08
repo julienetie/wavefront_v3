@@ -10,9 +10,9 @@ export default {
       browser: true
     }),
     commonjs(),
-        buble({
-			target: { chrome: 51, firefox: 48, safari: 9, edge: 14 }
-        }),
+    buble({
+	     target: { chrome: 61, firefox: 53, safari: 10, edge: 15 }
+    }),
   ],
   output:{
     name: "wavefront",

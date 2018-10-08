@@ -1,6 +1,9 @@
 const store  = {
-	components: {}
+	components: {},
+	config: {
+		namesAsDataAttributes: false,   // false | true | ['names to include',]
+		dataNamePrefix: 'components' //  'string' | null
+	}
 };
 
-const s = `<div>hello world</div>`
 export default store;
