@@ -25,7 +25,8 @@ Wavefront provides a handful of tools to create, reference, read and write to th
 **Components can be rendered asynchronously or synchronously without round trips to hell and back**. The `read` and `write` APIs are promise based and allow for batched operations. By using just `import {wave, read, write, $} from "wavefront";` you can achieve dynamic asynchronous rendering beyond the capabilities of Angular, React or Vue with or without vendor plugins.
 
 ### Why would I not want to use this
-The API is small, powerful and easy to use. But to fully appreciate this library you need to understand various parts of the native DOM.Libraries like Angular, React and Vue exist to protect you from these so called "scary" things. Welcome to the dark side 😈.
+The API is small, powerful and easy to use. To fully appreciate this Wavefront it helps to understand various parts of the native DOM API. Libraries such as Angular, React and Vue exist to protect you from these so called "scary" things. 
+Welcome to the dark side 😈.
 
 ### Features 
 - Create HTML/ SVG as template literal strings.
