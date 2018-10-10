@@ -37,6 +37,9 @@ The API is small, powerful and easy to use. But to fully appreciate this library
 - Render directly to the DOM without caching or extra overhead.
 - Manage your application state without the dependency of "this" or ".bind()"
 
+### Handeling Events
+At the moment Wavefront does not feature an events library. You can use [yogafire](https://github.com/julienetie/yogafire) for event delegation. Event management will likely be integrated in version 0.3.x using a modular version of yogafire.
+
 ### Browser Support
 ###### Supported browsers:
 - Edge 14, Chrome 61, Safari 10, Firefox 53, Opera
