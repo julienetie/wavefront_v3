@@ -16,13 +16,13 @@
 - **Faster than Virtual-DOM based libraries like React** You are directly manipulating the DOM, of course it's faster. 
 
 ### Why would I use this when we already have Angular, React and vue?
-###### Because the obscure nature of Virtual-DOM based view-layer libraries by default encourages frame-by-frame interactions which is below par for 21st centruy graphics 
+###### Because the obscure nature of Virtual-DOM based view-layer libraries by default encourages frame-by-frame interactions which is below par for 21st century graphics 
 
 To create "advanced" interactions within HTML you must have the ability to directly read or write to the DOM **without interference**. This is not subjective.
 
 Wavefront provides a handful of tools to create, reference, read and write to the DOM and encourages a **simple methodology to separate concerns between the logic and semantic presentation** of components.
 
-**Components can be rendered asycronously or syncronously without round trips to hell and back**. The `read` and `write` APIs are promise based and allow for batched operations. By using just `import {wave, read, write, $} from "wavefront";` you can achive dynamic asyncronous rendering beyond the capabilities of Angular, React or Vue with or without vendor plugins.
+**Components can be rendered asynchronously or synchronously without round trips to hell and back**. The `read` and `write` APIs are promise based and allow for batched operations. By using just `import {wave, read, write, $} from "wavefront";` you can achieve dynamic asynchronous rendering beyond the capabilities of Angular, React or Vue with or without vendor plugins.
 
 ### Why would I not want to use this
 The API is small, powerful and easy to use. But to fully appreciate this library you need to understand various parts of the native DOM.Libraries like Angular, React and Vue exist to protect you from these so called "scary" things. Welcome to the dark side 😈.
@@ -37,14 +37,14 @@ The API is small, powerful and easy to use. But to fully appreciate this library
 - Render directly to the DOM without caching or extra overhead.
 - Manage your application state without the dependency of "this" or ".bind()"
 
-### Handeling Events
+### Handling Events
 At the moment Wavefront does not feature an events library. You can use [yogafire](https://github.com/julienetie/yogafire) for event delegation. Event management will likely be integrated in version 0.3.x using a modular version of yogafire.
 
 ### Browser Support
 ###### Supported browsers:
 - Edge 14, Chrome 61, Safari 10, Firefox 53, Opera
 
-Wavefront does not support Internet Explorer. It is possible to make Wavefront support IE11 by using a DOMParser and babel but Wavefront does not want to be complicit in keeping IE11 alive, it's dying so just let it die.
+Wavefront does not support Internet Explorer. Although it is possible to make Wavefront support IE11 by using a [DOMParser](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser) along with [babel](https://babeljs.io) but Wavefront does not want to be complicit in keeping IE11 alive, it's dying so just let it die.
 
 #### Credits 
 - Wavefront Author: [Julien Etienne](https://github.com/julienetie)
