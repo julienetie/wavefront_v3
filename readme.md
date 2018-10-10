@@ -75,7 +75,7 @@ const descendentName = descendent2.firstChild.wholeText.trimEnd();
 console.log(descendentName) // Grandmother
 console.log(descendent2 === $.Sarah) // true
 ```
-##### In Example:
+###### JavaScript In Example:
 * [firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
 * [wholeText](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
 * [trimEnd](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd)
