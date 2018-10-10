@@ -62,7 +62,7 @@ _______________
 * @return {Object} descendent of element. 
 ###### Example:
 ```javascript
-import {wave, descendent, $} from 'wavefront';
+import {$, descendent, read, wave} from 'wavefront';
 
 wave `
 <div Sarah>Grandmother
@@ -71,10 +71,12 @@ wave `
   </div>
 </div>`;
 
-const descendent2 = descendent($.darren,2);
-const descendentName = descendent2.firstChild.wholeText.trimEnd(); 
-console.log(descendentName) // Grandmother
-console.log(descendent2 === $.Sarah) // true
+read(()=>{
+  const descendent2 = descendent($.darren,2);
+  const descendentName = descendent2.firstChild.wholeText.trimEnd(); 
+  console.log(descendentName) // Grandmother
+  console.log(descendent2 === $.Sarah) // true
+});
 ```
 ###### JavaScript In Example:
 * [firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
