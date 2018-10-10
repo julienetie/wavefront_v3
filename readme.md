@@ -59,7 +59,7 @@ _______________
 ##### _Get a specific descendent by generation_
 * @param {Object} element - the generation by depth.
 * @param {number} generation - the generation by depth.
-* @returns {Object} descendent of element. 
+* @return {Object} descendent of element. 
 ###### Example:
 ```javascript
 import {wave, descendent, $} from 'wavefront';
