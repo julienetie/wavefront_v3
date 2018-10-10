@@ -6,44 +6,42 @@
 
 # WAVEFRONT
 
-### A View Layer Engine For Advanced DOM Manipulations
+### A View Layer Engine For Creating Advanced Web User Interfaces
 
-##### Declarative Templates *|* Automatically Referenced Elements *|* DOM Helpers
+##### What can it do?
+- **Create components using template literals**: you can use Elements, strings or arrays as nested tags. 
+- **Add namd-component attributes to create references**: `'<div Nav-Bar></div>'` (Names are not rendered by default)   
+- **Access component references using the $ object**. `$.navBar // Nav-Bar element` (No need for .querySelector)
+- **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on **fastdom**.
+- **Faster than Virtual-DOM based libraries like React** You are directly manipulating the DOM, of course it's faster. 
 
+###### Why would I use this over Angular, React or vue?
+**Because the obscurity of Virtual-DOM based view-layer libraries by default encourages frame-by-frame interactions which is below par for 21st centruy graphics** 
 
-#### Why
-Wavefront allows you to: 
-- create HTML as template literal strings
-- Include other strings, elements or arrays (of either) as template tags
-- Separate presentation and logic (view / controller paired architecture) 
-- Define any component with a hidden name attribute 
-- Reference any named component anywhere in the application
-- Use DOM helpers that allow you to create applications without the limitations of Virtual-DOM implementations
-- Render directly to the DOM without caching or extra overhead
+In English: To create "advanced" interactions within HTML you must have the ability to directly read or write to the DOM **without interference**. This is not subjective.
+
+Wavefront provides a handful of tools to create, reference, read and write to the DOM and encourages a **simple methodology to separate concerns between the logic and semantic presentation** of components.
+
+**Components can be rendered asycronously or syncronously without round trips to hell and back**. The `read` and `write` APIs are promise based and allow for batched operations. By using just `import {wave, read, write, $} from "wavefront";` you can achive dynamic asyncronous rendering beyond the capabilities of Angular, React or Vue with or without vendor plugins.
+
+##### Why would I not want to use this
+The API is small but powerful, but to take full advantage you need to understand various DOM methods. 
+Libraries like Angular, React and Vue exist to protect you from these "scary" things. Welcome to the dark side 😈.
+
+###### Features: 
+- Create HTML/ SVG as template literal strings.
+- Include other strings, elements or arrays (of either) as template tags.
+- Separate presentation and logic (view / controller paired architecture). 
+- Define components with a component-name attribute (which can optionally render as a data attribute). 
+- Reference any named component anywhere in the application.
+- Use DOM helpers that allow you to create applications beyond the limitations of Virtual-DOM implementations.
+- Render directly to the DOM without caching or extra overhead.
 - Manage your application state without the dependency of "this" or ".bind()"
 
-__ 
-### Separation of Concerns
-**Wavefront in essence is a view-layer library, design pattern and a discipline based on ES6 and first-class functions**. It uses the concept of **_Declarative Templates_** to separate logic from presentation. Build application logic however you prefer providing there is no explicit logic within your templates. 
-___
-### Ultra-fast
-**Wavefront was designed to build real world websites and web applications over passing theoretical benchmarks challenges**.
-Because there is not intermediate overhead it is expected to perform faster than most if not all virtual-DOM based view-layer libraries. 
-___
-### A Comprehensive DOM Solution
-- _Abstract from the DOM_ TBA
-- _Render to the DOM_
-- _DOM helper functions_
-- _Statically generate HTML per build (As a SSR Alternative)_ TBA
-___
-### No Vendor Lock-In
-Migration and vendor lock-in are expensive aspects of front-end development. wavefront-migration converts _Declarative Templates_ into HTML not only to escape lock-in but in case you have built Wavefront SPA interfaces you would like to later migrate to HTML.  
-___
-### Max size xxx
-___
 ### Browser Support
 Supported browsers:
-Edge 14, Chrome 61, Safari 10, Firefox 53, Opera
+- Edge 14, Chrome 61, Safari 10, Firefox 53, Opera
+Wavefront does not support Internet Explorer. It is possible to make Wavefront support IE11 by using a DOMParser and babel but Wavefront does not want to be complicit in keeping IE11 alive, it's dying so just let it die.
 
 
 MIT (C) Julien Etienne 2018
