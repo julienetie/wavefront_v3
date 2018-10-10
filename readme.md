@@ -48,3 +48,34 @@ Wavefront does not support Internet Explorer. It is possible to make Wavefront s
 - FastDOM Author: [Wilson Page](https://github.com/wilsonpage)
 
 MIT (C) Julien Etienne 2018
+
+_______________
+
+# Documentation
+
+<img src="https://github.com/julienetie/img/blob/master/wavefront-small.pdf.png?raw=true"/> 
+
+## descendent 
+##### _Get a specific descendent by generation_
+ * @param {number} generation - the generation by depth.
+ * @returns {Object} element. 
+###### Example:
+```javascript
+import {wave, descendent, $} from 'wavefront';
+
+wave `
+<div Sarah>Grandmother
+  <div Maria>Mother
+     <div Darren>Son</div>
+  </div>
+</div>`;
+
+const descendent2 = descendent($.darren,2);
+const descendentName = descendent2.firstChild.wholeText.trimEnd(); 
+console.log(descendentName) // Grandmother
+console.log(descendent2 === $.Sarah) // true
+```
+##### In Example:
+* [firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
+* [wholeText](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
+* [trimEnd](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd)
