@@ -35,7 +35,7 @@ The API is small, powerful and easy to use. But to fully appreciate this library
 - Reference any named component anywhere in the application.
 - Use DOM helpers that allow you to create applications beyond the limitations of Virtual-DOM implementations.
 - Render directly to the DOM without caching or extra overhead.
-- Manage your application state without the dependency of "this" or ".bind()"
+- Manage your application state without the dependency of [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) or [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
 
 ### Handling Events
 At the moment Wavefront does not feature an events library. You can use [yogafire](https://github.com/julienetie/yogafire) for event delegation. Event management will likely be integrated in version 0.3.x using a modular version of yogafire.
