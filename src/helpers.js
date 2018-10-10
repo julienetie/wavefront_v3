@@ -46,5 +46,7 @@ export const isFirstUpperCase = string => string[0].toUpperCase() === string[0];
  */
 export const isFirstAlpha = string => string[0].match(/^[a-z]+$/i);
 
-
+/** 
+ * isArray method.
+ */
 export const isArray = Array.isArray;

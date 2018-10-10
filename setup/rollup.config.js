@@ -3,16 +3,17 @@ import commonjs from 'rollup-plugin-commonjs';
 import buble from 'rollup-plugin-buble';
 
 export default {
-  input: "src/wavefront.js",
+  input: "src/index.js",
   plugins: [
+    commonjs(),
     nodeResolve({
       jsnext: true,
       browser: true
     }),
-    commonjs(),
+
     buble({
 	     target: { chrome: 61, firefox: 53, safari: 10, edge: 15 }
-    }),
+    }) 
   ],
   output:{
     name: "wavefront",
