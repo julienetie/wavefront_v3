@@ -12,7 +12,7 @@
 - **Create components using template literals**: you can use Elements, strings or arrays as nested tags. 
 - **Add namd-component attributes to create references**: `'<div Nav-Bar></div>'` (Names are not rendered by default)   
 - **Access component references using the $ object**. `$.navBar // Nav-Bar element` (No need for .querySelector)
-- **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on **fastdom**.
+- **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on [**fastdom**](https://github.com/wilsonpage/fastdom).
 - **Faster than Virtual-DOM based libraries like React** You are directly manipulating the DOM, of course it's faster. 
 
 ### Why would I use this when we already have Angular, React and vue?
@@ -40,7 +40,11 @@ The API is small, powerful and easy to use. But to fully appreciate this library
 ### Browser Support
 ###### Supported browsers:
 - Edge 14, Chrome 61, Safari 10, Firefox 53, Opera
+
 Wavefront does not support Internet Explorer. It is possible to make Wavefront support IE11 by using a DOMParser and babel but Wavefront does not want to be complicit in keeping IE11 alive, it's dying so just let it die.
 
+#### Credits 
+- Wavefront Author: [Julien Etienne](https://github.com/julienetie)
+- FastDOM Author: [Wilson Page](https://github.com/wilsonpage)
 
 MIT (C) Julien Etienne 2018
