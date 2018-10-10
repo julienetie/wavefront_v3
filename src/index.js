@@ -1,9 +1,9 @@
 import {
     aquire,
-    ancestor,
     childNodes,
     children,
     cycle,
+    descendent,
     eachClosest,
     kill,
     queryAll,
@@ -25,10 +25,10 @@ const $ = components;
 const config = config => aquire(store.config, config);
 export {
     aquire,
-    ancestor,
     childNodes,
     children,
     components,
+    descendent,
     config,
     cycle,
     eachClosest,

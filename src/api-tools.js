@@ -92,11 +92,11 @@ export const siblingsKeys = element => Array.from(element.parentElement.children
     }, []);
 
 /** 
- * Get specific ancestor by generation.
+ * Get specific descendent by generation.
  * @param {number} level - the generation by depth.
  * @returns {Object} element. 
  */
-export const ancestor = (element, level) => {
+export const descendent = (element, level) => {
     let count = 0;
     const getParent = node => {
         count++;
