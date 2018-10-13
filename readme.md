@@ -80,7 +80,7 @@ const items = children(document.body); // greeting & question
 > ###### JavaScript In Example:
 > * [append](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append)
 > ###### Note:
-> * This is just a shorthand for [...ParentNode.children]: [children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
+> * This is just a shorthand for [...ParentNode.children]. See [children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
 
 ## descendent 
 ##### _Get a specific descendent by generation_
