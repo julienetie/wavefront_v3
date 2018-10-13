@@ -5,6 +5,7 @@
 </p>
 
 # WAVEFRONT
+[documentation](#documentation)
 
 ### A View Layer Engine For Creating Advanced Web User Interfaces
 
