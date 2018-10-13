@@ -63,6 +63,28 @@ _______________
 
 <img src="https://github.com/julienetie/img/blob/master/wavefront-small.pdf.png?raw=true"/> 
 
+## childNodes
+##### _Get childNodes as an array_
+> * @param {elementNodeReference} element.
+> * @return {Array} new element array. 
+> ###### Example:
+```javascript
+import { childNodes } from 'wavefront';
+
+const greeting = wave `<div class="greeting">Hello World!</div>`;
+const question = wave `<div class="question">How are you?</div>`;
+
+document.body.appendChild(greeting);
+document.body.insertBefore(question,greeting);
+const items = childNodes(document.body); // greeting & question
+```
+> ###### JavaScript In Example:
+> * [appendChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
+> * [insertBefore](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore)
+
+> ###### Note:
+> * This is just shorthand for [...elementNodeReference.childNodes]. See [childNodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes)
+
 ## children
 ##### _Get children as an array_
 > * @param {ParentNode} element.
@@ -80,7 +102,7 @@ const items = children(document.body); // greeting & question
 > ###### JavaScript In Example:
 > * [append](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append)
 > ###### Note:
-> * This is just a shorthand for [...ParentNode.children]. See [children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
+> * This is just shorthand for [...ParentNode.children]. See [children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
 
 ## descendent 
 ##### _Get a specific descendent by generation_
