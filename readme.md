@@ -57,8 +57,10 @@ _______________
 
 # Documentation
 
+- [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
+
 
 
 <img src="https://github.com/julienetie/img/blob/master/wavefront-small.pdf.png?raw=true"/> 
