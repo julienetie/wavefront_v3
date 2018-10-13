@@ -16,17 +16,10 @@
 - **Faster than Virtual-DOM based libraries** You are directly manipulating the DOM so of course it's faster. 
 
 ### Why would I use this when we already have Angular, React and Vue?
-###### Because the obscure nature of Virtual-DOM based view-layer libraries by default encourages frame-by-frame interactions which is below par for 21st century graphics 
-
-To create "advanced" interactions within HTML it is imperative to directly read and write to the DOM **without interference**.
-
-Wavefront provides a handful of tools to create, reference, read and write to the DOM and encourages a **simple methodology to separate concerns between the logic and semantic presentation** of components.
+###### Because the obscure nature of Virtual-DOM based view-layer libraries by default encourages frame-by-frame interactions which looks crappy
+Directly interacting with the DOM allows you to overcome such outcomes but it can sometimes become overly complex or messy. Wavefront reduces the compexities that commonly arise when creating user interfaces on the web by providing a handful of tools to create, reference, read and write to the DOM and utilizes a **simple methodology to separate concerns between the logic and semantic presentation** of components.
 
 **Components can be rendered asynchronously or synchronously without round trips to hell and back**. The `read` and `write` APIs are promise based and allow for batched operations. By using just `import {wave, read, write, $} from "wavefront";` you can achieve dynamic asynchronous rendering beyond the capabilities of Angular, React or Vue with or without vendor plugins.
-
-### Why would I not want to use this
-The API is small, powerful and easy to use. To fully appreciate this Wavefront it helps to understand various parts of the native DOM API. Libraries such as Angular, React and Vue exist to protect you from these so called "scary" things. 
-Welcome to the dark side 😈.
 
 ### Features 
 - Create HTML/ SVG as template literal strings.
@@ -45,11 +38,11 @@ At the moment Wavefront does not feature an events library. You can use [yogafir
 ###### Supported browsers:
 - Edge 14, Chrome 61, Safari 10, Firefox 53, Opera
 
-Wavefront does not support Internet Explorer. Although it is possible to make Wavefront support IE11 by using a [DOMParser](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser) along with [babel](https://babeljs.io) but Wavefront does not want to be complicit in keeping IE11 alive, it's dying so just let it die.
+Wavefront does not support Internet Explorer. Although it is possible to make Wavefront support IE11 by using a [DOMParser](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser) along with [babel](https://babeljs.io) Wavefront does not want to be complicit in keeping IE11 alive, it's dying so just let it die.
 
 #### Credits 
 - Wavefront Author: [Julien Etienne](https://github.com/julienetie)
-- FastDOM Author: [Wilson Page](https://github.com/wilsonpage)
+- [fastdom](https://github.com/wilsonpage/fastdom) Author: [Wilson Page](https://github.com/wilsonpage)
 
 MIT (C) Julien Etienne 2018
 
