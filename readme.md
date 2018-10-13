@@ -9,16 +9,16 @@
 ### A View Layer Engine For Creating Advanced Web User Interfaces
 
 ### What can it do?
-- **Create components using template literals**: you can use Elements, strings or arrays as nested tags. 
+- **Create components using template literals**: Nest elements, strings or arrays of elements and/or strings. 
 - **Add namd-component attributes to create references**: `'<div Nav-Bar></div>'` (Names are not rendered by default)   
 - **Access component references using the $ object**. `$.navBar // Nav-Bar element` (No need for .querySelector)
 - **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on [**fastdom**](https://github.com/wilsonpage/fastdom).
-- **Faster than Virtual-DOM based libraries like React** You are directly manipulating the DOM, of course it's faster. 
+- **Faster than Virtual-DOM based libraries** You are directly manipulating the DOM so of course it's faster. 
 
-### Why would I use this when we already have Angular, React and vue?
+### Why would I use this when we already have Angular, React and Vue?
 ###### Because the obscure nature of Virtual-DOM based view-layer libraries by default encourages frame-by-frame interactions which is below par for 21st century graphics 
 
-To create "advanced" interactions within HTML you must have the ability to directly read or write to the DOM **without interference**. This is not subjective.
+To create "advanced" interactions within HTML it is imperative to directly read and write to the DOM **without interference**.
 
 Wavefront provides a handful of tools to create, reference, read and write to the DOM and encourages a **simple methodology to separate concerns between the logic and semantic presentation** of components.
 
