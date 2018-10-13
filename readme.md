@@ -57,7 +57,30 @@ _______________
 
 # Documentation
 
+- [children](#children)
+- [descendent](#descendent)
+
+
 <img src="https://github.com/julienetie/img/blob/master/wavefront-small.pdf.png?raw=true"/> 
+
+## children
+##### _Get children as an array_
+> * @param {ParentNode} element.
+> * @return {Array} new element array. 
+> ###### Example:
+```javascript
+import { children } from 'wavefront';
+
+const greeting = wave `<div class="greeting">Hello World!</div>`;
+const question = wave `<div class="question">How are you?</div>`;
+
+document.body.append(greeting, question);
+const items = children(document.body); // greeting & question
+```
+> ###### JavaScript In Example:
+> * [append](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append)
+> ###### Note:
+> * This is just a shorthand for [...ParentNode.children]: [children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
 
 ## descendent 
 ##### _Get a specific descendent by generation_
