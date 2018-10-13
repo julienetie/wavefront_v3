@@ -10,11 +10,11 @@
 ### A View Layer Engine For Creating Advanced Web User Interfaces
 
 ### What can it do?
-- **Create components using template literals**: Nest elements, strings or arrays of elements and/or strings. 
-- **Add namd-component attributes to create references**: `'<div Nav-Bar></div>'` (Names are not rendered by default)   
-- **Access component references using the $ object**. `$.navBar // Nav-Bar element` (No need for .querySelector)
+- **Create components using template literals**: Nest elements, strings or arrays of elements and/or strings.
+- **Namespace using parenthesis and add components names **: `(sidebars)<div Latest-News><ul List><li></li></ul></div>`  
+- **Access created components from returned object**: `const { latestNews, list } = returnedObject.sidebars;`   
 - **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on [**fastdom**](https://github.com/wilsonpage/fastdom).
-- **Faster than Virtual-DOM based libraries** You are directly manipulating the DOM so of course it's faster. 
+- **Perform faster than Virtual-DOM based libraries** You are directly manipulating the DOM so of course it's faster. 
 
 ### Why would I use this when we already have Angular, React and Vue?
 ###### Because the obscure nature of Virtual-DOM based view-layer libraries by default encourages frame-by-frame interactions which looks crappy
