@@ -56,11 +56,12 @@ MIT (C) Julien Etienne 2018
 _______________
 
 # Documentation
-
+##### API
 - [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
-
+##### Resources
+- [What forces layout / reflow](https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
 
 
 <img src="https://github.com/julienetie/img/blob/master/wavefront-small.pdf.png?raw=true"/> 
