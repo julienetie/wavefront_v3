@@ -138,12 +138,53 @@ read(() => {
 > * @param {string} selector.
 > * @return {Array} new element array. 
 > ###### Example:
-```javascript
-import { eachClosest, wave } from 'wavefront';
 
-// TBA
+```javascript
+import { eachClosest, wave, components } from 'wavefront';
+
+wave `
+  <ul>
+    <li class="a" data-item>
+        <span One>One</span>
+        <span Two>Two</span>
+    </li>
+    <li class="b" data-item>
+        <span Three>Three</span>
+    </li>
+    <li class="c" data-item>
+        <span Four>Four</span>
+    </li>
+  </ul>`;
+
+const { one, two, three, four } = components;
+const someList = [one, two, three, four];
+const items = eachClosest(someList, '[data-item]'); // [< .a >,< .b >,< .b >,< .c >,]
 ```
-> ###### JavaScript In Example:
-TBA
-> ###### Note:
-TBA
+## eachContains TBA
+##### _Get the matching contained element for each element in an array_
+> * @param {Array} elementArray.
+> * @param {string} selector.
+> * @return {Array} new element array. 
+> ###### Example:
+
+```javascript
+import { eachClosest, wave, components } from 'wavefront';
+
+wave `
+  <ul>
+    <li Item-A>
+        <span clas="one">One</span>
+        <span clas="two">Two</span>
+    </li>
+    <li Item-B>
+        <span clas="three">Three</span>
+    </li>
+    <li Item-C>
+        <span clas="four">Four</span>
+    </li>
+  </ul>`;
+
+const { itemA, itemB, itemC } = components;
+const someList = [itemA, itemB, itemC];
+const items = eachContains(someList, 'span'); // [< .one >,< .two >,< .three >,< .four >,]
+```
