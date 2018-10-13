@@ -101,7 +101,7 @@ const items = children(document.body); // greeting & question
 > ###### Note:
 > * This is just shorthand for [...ParentNode.children]. See [children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
 
-## __descendent__ 
+## descendent 
 ##### _Get a specific descendent by generation_
 > * @param {Object} element - the child element to traverse from.
 > * @param {number} generation - the generation by depth.
