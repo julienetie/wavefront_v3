@@ -71,7 +71,7 @@ _______________
 > * @return {Array} new element array. 
 > ###### Example:
 ```javascript
-import { childNodes } from 'wavefront';
+import { childNodes, wave } from 'wavefront';
 
 const greeting = wave `<div class="greeting">Hello World!</div>`;
 const question = wave `<div class="question">How are you?</div>`;
@@ -93,7 +93,7 @@ const items = childNodes(document.body); // greeting & question
 > * @return {Array} new element array. 
 > ###### Example:
 ```javascript
-import { children } from 'wavefront';
+import { children, wave } from 'wavefront';
 
 const greeting = wave `<div class="greeting">Hello World!</div>`;
 const question = wave `<div class="question">How are you?</div>`;
@@ -136,3 +136,19 @@ read(() => {
 > ###### Note:
 > * To obtain an ancestor by selector consider: [closest](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
 > * To know if an element is a descendent of an element consider: [contains](https://developer.mozilla.org/en-US/docs/Web/API/Node/contains), [querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) and [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
+
+## eachClosest 
+##### _Get the matching ancestor for each element in an array_
+> * @param {Array} elementArray.
+> * @param {string} selector.
+> * @return {Array} new element array. 
+> ###### Example:
+```javascript
+import { eachClosest, wave } from 'wavefront';
+
+// TBA
+```
+> ###### JavaScript In Example:
+TBA
+> ###### Note:
+TBA
