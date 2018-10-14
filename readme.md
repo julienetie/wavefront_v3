@@ -19,8 +19,8 @@
 - **Namespace using parenthesis and add components names**: `(sidebars)<div Latest-News><ul List><li></li></ul></div>`.
 - **Access created components from returned object**: `const { latestNews, list } = returnedObject.sidebars;`.
 - **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on [**fastdom**](https://github.com/wilsonpage/fastdom).
-- **Performs faster and is more memory efficient than Virtual-DOM based libraries**
-- **Provides DOM helpers for common usage**.
+- **Perform better (faster and more memory efficiently) than Virtual-DOM based libraries**
+- **Provide DOM helpers for common usage**.
 
 ### Why would I use this when we already have Angular, React and Vue?
 - The obscure strucuture of Virtual-DOM implementations encourages frame-by-frame interactions. Which means you are removing elements from the DOM as an alternative to animations which looks kind of crappy in the 21st century.
