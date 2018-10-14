@@ -18,14 +18,14 @@
 - **Provide DOM helpers for common usage**
 
 ### Why would I use this when we already have Angular, React and Vue?
-- ###### The obscure strucuture of Virtual-DOM implementations encourages frame-by-frame interactions where you are adding and removing common changes rather than hiding and revealing.
-- ###### Any element can be a component and you can access any created component as a DOM Node at any time.
-- ###### You can render mulitple parts of the DOM asynchronously whilst minimizing layout thrashing. 
-- ###### Lifecycles can easily be managed by state managemnt or via MutationObserver.
-- ###### Wavefront's UI pattern separates semantic presentation from logic. 
-- ###### No vendor plugins, no special syntax, no eco-system, 
-- ###### It's faster than Virtual-DOM based libraries and more memeory efficient for mobile devices.
-- ###### Execute application state without [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) or [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
+- The obscure strucuture of Virtual-DOM implementations encourages frame-by-frame interactions where you are adding and removing common changes rather than hiding and revealing.
+- Any element can be a component and you can access any created component as a DOM Node at any time.
+- You can render mulitple parts of the DOM asynchronously whilst minimizing layout thrashing. 
+- Lifecycles can easily be managed by state managemnt or via MutationObserver.
+- Wavefront's UI pattern separates semantic presentation from logic. 
+- No vendor plugins, no special syntax, no eco-system, 
+- It's faster than Virtual-DOM based libraries and more memeory efficient for mobile devices.
+- Execute application state without [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) or [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
 
 ### Handling Events
 At the moment Wavefront does not feature an events library. You can use [yogafire](https://github.com/julienetie/yogafire) for event delegation. Event management will likely be integrated in version 0.3.x using a modular version of yogafire.
