@@ -6,6 +6,7 @@ _______________
 - [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
+##### [Wave Architecture](#Wave Architecture)
 ##### Resources
 - [What forces layout / reflow](https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
 
@@ -142,3 +143,6 @@ const { itemA, itemB, itemC } = components;
 const someList = [itemA, itemB, itemC];
 const items = eachContains(someList, 'span'); // [< .one >,< .two >,< .three >,< .four >,]
 ```
+
+# Wave Architecture
+
