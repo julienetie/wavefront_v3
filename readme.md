@@ -15,15 +15,15 @@
 ### _A View Layer Engine For Creating Advanced Web User Interfaces_
 
 ### What can it do?
-- **Create components using template literals**: Nest elements, strings or arrays of elements and/or strings.
-- **Namespace using parenthesis and add components names**: `(sidebars)<div Latest-News><ul List><li></li></ul></div>`  
-- **Access created components from returned object**: `const { latestNews, list } = returnedObject.sidebars;`   
+- **Create components using template literals**: Nest elements, markupStrings or arrays of elements and/or markupString.
+- **Namespace using parenthesis and add components names**: `(sidebars)<div Latest-News><ul List><li></li></ul></div>`.
+- **Access created components from returned object**: ```const { latestNews, list } = returnedObject.sidebars;`.
 - **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on [**fastdom**](https://github.com/wilsonpage/fastdom).
 - **Perform faster than Virtual-DOM based libraries**: You are directly manipulating the DOM so of course it's faster.
-- **Provide DOM helpers for common usage**
+- **Provide DOM helpers for common usage**.
 
 ### Why would I use this when we already have Angular, React and Vue?
-- The obscure strucuture of Virtual-DOM implementations encourages frame-by-frame interactions where you are adding and removing common changes rather than hiding and revealing.
+- The obscure strucuture of Virtual-DOM implementations encourages frame-by-frame interactions. Which means you are removing elements from the DOM as an alternative to animations and it looks horrible.
 - Any element can be a component and you can access any created component as a DOM Node at any time.
 - You can render mulitple parts of the DOM asynchronously whilst minimizing layout thrashing. 
 - Lifecycles can easily be managed by state managemnt or via MutationObserver.
