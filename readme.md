@@ -17,7 +17,7 @@
 ### What can it do?
 - **Create components using template literals**: Nest elements, markupStrings or arrays of elements and/or markupString.
 - **Namespace using parenthesis and add components names**: `(sidebars)<div Latest-News><ul List><li></li></ul></div>`.
-- **Access created components from returned object**: ```const { latestNews, list } = returnedObject.sidebars;`.
+- **Access created components from returned object**: `const { latestNews, list } = returnedObject.sidebars;`.
 - **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on [**fastdom**](https://github.com/wilsonpage/fastdom).
 - **Performs faster and is more memory efficient than Virtual-DOM based libraries**
 - **Provides DOM helpers for common usage**.
@@ -29,7 +29,7 @@
 - Lifecycles can easily be managed by state managemnt or via MutationObserver.
 - Wavefront's UI pattern separates semantic presentation from logic.
 - No vendor plugins, no special syntax, no eco-system.
-- Wavefront is a pseudo-functional library without any reliance on [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) or [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) so you can authentically build application logic in your style of choice.
+- Wavefront is not dependent on the use of: [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) or JSX. There are no dependencies.
 
 ### Browser Support
 ###### Supported browsers:
