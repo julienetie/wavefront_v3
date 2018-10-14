@@ -26,9 +26,10 @@
 - The obscure strucuture of Virtual-DOM implementations encourages frame-by-frame interactions. Which means you are removing elements from the DOM as an alternative to animations which looks kind of crappy in the 21st century.
 - Any element can be a component and you can access that component from anywhere once created.
 - You can render mulitple parts of the DOM asynchronously whilst minimizing layout thrashing. 
-- Lifecycles can easily be managed by state managemnt or via MutationObserver.
+- Lifecycles can easily be managed by state managemnt and/or [MutationObserver](https://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/).
 - Wavefront's UI pattern separates semantic presentation from logic.
-- No vendor plugins, no special syntax, no eco-system.
+- **No vendor plugins, no special syntax, no eco-system EVER** wavefront specific plugins and middlewear are discouraged. 
+- Events are delegated (TBA) and do not clutter markupStrings.
 - Wavefront is not dependent on the use of: [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) or JSX. There are no dependencies.
 
 ### Browser Support
