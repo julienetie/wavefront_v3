@@ -12,25 +12,24 @@
 
 [documentation](https://github.com/julienetie/wavefront/blob/master/documentation.md)
 
-### _A View Layer Engine For Creating Advanced Web User Interfaces_
+### _An Advanced DOM View Layer_
 
 ### What can it do?
 - **Create components using template literals**: Nest elements, markupStrings or arrays of elements and/or markupString.
 - **Namespace using parenthesis and add components names**: `(sidebars)<div Latest-News><ul List><li></li></ul></div>`.
 - **Access created components from returned object**: ```const { latestNews, list } = returnedObject.sidebars;`.
 - **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on [**fastdom**](https://github.com/wilsonpage/fastdom).
-- **Perform faster than Virtual-DOM based libraries**: You are directly manipulating the DOM so of course it's faster.
-- **Provide DOM helpers for common usage**.
+- **Performs faster and is more memory efficient than Virtual-DOM based libraries**
+- **Provides DOM helpers for common usage**.
 
 ### Why would I use this when we already have Angular, React and Vue?
-- The obscure strucuture of Virtual-DOM implementations encourages frame-by-frame interactions. Which means you are removing elements from the DOM as an alternative to animations and it looks horrible.
-- Any element can be a component and you can access any created component as a DOM Node at any time.
+- The obscure strucuture of Virtual-DOM implementations encourages frame-by-frame interactions. Which means you are removing elements from the DOM as an alternative to animations which looks kind of crappy in the 21st century.
+- Any element can be a component and you can access that component from anywhere once created.
 - You can render mulitple parts of the DOM asynchronously whilst minimizing layout thrashing. 
 - Lifecycles can easily be managed by state managemnt or via MutationObserver.
-- Wavefront's UI pattern separates semantic presentation from logic. 
+- Wavefront's UI pattern separates semantic presentation from logic.
 - No vendor plugins, no special syntax, no eco-system.
-- It's faster than Virtual-DOM based libraries and more memeory efficient for mobile devices.
-- Execute application state without [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) or [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
+- Wavefront is a pseudo-functional library without any reliance on [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) or [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) so you can authentically build application logic in your style of choice.
 
 ### Browser Support
 ###### Supported browsers:
