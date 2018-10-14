@@ -12,7 +12,7 @@
 
 [documentation](https://github.com/julienetie/wavefront/blob/master/documentation.md)
 
-### A View Layer Engine For Creating Advanced Web User Interfaces
+### _A View Layer Engine For Creating Advanced Web User Interfaces_
 
 ### What can it do?
 - **Create components using template literals**: Nest elements, strings or arrays of elements and/or strings.
