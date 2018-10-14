@@ -14,23 +14,18 @@
 - **Namespace using parenthesis and add components names**: `(sidebars)<div Latest-News><ul List><li></li></ul></div>`  
 - **Access created components from returned object**: `const { latestNews, list } = returnedObject.sidebars;`   
 - **Batch reads and writes to the DOM**: Using promise based `read()` and `write()` functions based on [**fastdom**](https://github.com/wilsonpage/fastdom).
-- **Perform faster than Virtual-DOM based libraries** You are directly manipulating the DOM so of course it's faster. 
+- **Perform faster than Virtual-DOM based libraries**: You are directly manipulating the DOM so of course it's faster.
+- **Provide DOM helpers for common usage**
 
 ### Why would I use this when we already have Angular, React and Vue?
-###### Because the obscure nature of Virtual-DOM based view-layer libraries by default encourages frame-by-frame interactions which looks crappy
-Directly interacting with the DOM allows you to overcome such outcomes but it can sometimes become overly complex or messy. Wavefront reduces the compexities that commonly arise when creating user interfaces on the web by providing a handful of tools to create, reference, read and write to the DOM and utilizes a **simple methodology to separate concerns between the logic and semantic presentation** of components.
-
-**Components can be rendered asynchronously or synchronously without round trips to hell and back**. The `read` and `write` APIs are promise based and allow for batched operations. By using just `import {wave, read, write, $} from "wavefront";` you can achieve dynamic asynchronous rendering beyond the capabilities of Angular, React or Vue with or without vendor plugins.
-
-### Features 
-- Create HTML/ SVG as template literal strings.
-- Include other strings, elements or arrays (of either) as template tags.
-- Separate presentation and logic (view / controller paired architecture). 
-- Define components with a component-name attribute (which can optionally render as a data attribute). 
-- Reference any named component anywhere in the application.
-- Use DOM helpers that allow you to create applications beyond the limitations of Virtual-DOM implementations.
-- Render directly to the DOM without caching or extra overhead.
-- Manage your application state without the dependency of [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) or [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
+- ###### The obscure strucuture of Virtual-DOM implementations encourages frame-by-frame interactions where you are adding and removing components rather than hiding and revealing.
+- Any element can be a component and you can access any created component as a DOM Node at any time.
+- You can render mulitple parts of the DOM asynchronously whilst minimizing layout thrashing. 
+- Lifecycles can easily be managed by state managemnt or via MutationObserver.
+- Wavefront's UI pattern separates semantic presentation from logic. 
+- No vendor plugins, no special syntax, no eco-system, 
+- It's faster than Virtual-DOM based libraries and more memeory efficient for mobile devices.
+- Execute application state without [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) or [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
 
 ### Handling Events
 At the moment Wavefront does not feature an events library. You can use [yogafire](https://github.com/julienetie/yogafire) for event delegation. Event management will likely be integrated in version 0.3.x using a modular version of yogafire.
