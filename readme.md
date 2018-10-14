@@ -28,12 +28,9 @@
 - You can render mulitple parts of the DOM asynchronously whilst minimizing layout thrashing. 
 - Lifecycles can easily be managed by state managemnt or via MutationObserver.
 - Wavefront's UI pattern separates semantic presentation from logic. 
-- No vendor plugins, no special syntax, no eco-system, 
+- No vendor plugins, no special syntax, no eco-system.
 - It's faster than Virtual-DOM based libraries and more memeory efficient for mobile devices.
 - Execute application state without [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) or [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind).
-
-### Handling Events
-At the moment Wavefront does not feature an events library. You can use [yogafire](https://github.com/julienetie/yogafire) for event delegation. Event management will likely be integrated in version 0.3.x using a modular version of yogafire.
 
 ### Browser Support
 ###### Supported browsers:
