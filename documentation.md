@@ -8,7 +8,7 @@ _______________
 - [children](#children)
 - [descendent](#descendent)
 
-##### [Wave Architecture](#wave%20architecture)
+##### [Wave Architecture](#wave-architecture)
 
 ##### Resources
 - [What forces layout / reflow](https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
@@ -147,5 +147,5 @@ const someList = [itemA, itemB, itemC];
 const items = eachContains(someList, 'span'); // [< .one >,< .two >,< .three >,< .four >,]
 ```
 
-# Wave Architecture
+# Wave-Architecture
 
