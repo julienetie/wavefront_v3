@@ -6,6 +6,48 @@ import {
 import wave from './wave';
 
 /** 
+ * Get childNodes as an array.
+ * @param {elementNodeReference} element.
+ * @return {Array} new element array. 
+ */
+export const childNodes = element => Array.from(element.childNodes);
+
+/** 
+ * Get children as an array.
+ * @param {ParentNode} element.
+ * @return {Array} new element array. 
+ */
+export const children = element => Array.from(element.children);
+
+/** 
+ * Get specific descendent by generation.
+ * @param {number} level - the generation by depth.
+ * @returns {Object} element. 
+ */
+export const descendent = (element, level) => {
+    let count = 0;
+    const getParent = node => {
+        count++;
+        const parent = node.parentElement;
+        if (count === level) {
+            return parent;
+        } else {
+            return getParent(parent);
+        }
+    }
+    return getParent(element);
+}
+
+/** 
+ * Get the matching ancestor for each element in an array.
+ * @param{Array} elementArray.
+ * @param{string} selector.
+ * @returns{Array} new element array. 
+ */
+export const eachClosest = (elementArray, selector) =>
+    elementArray.map(element => element.closest(selector));
+
+/** 
  * Optimised reads.
  * @param {Function} callback.  
  * @return {number} job reference. 
@@ -43,27 +85,6 @@ export const queryEach = (elementArray, selector) =>
 export const queryEachAll = (elementArray, selector) =>
     elementArray.map(element => element.querySelectorAll(selector));
 
-/** 
- * Get the matching ancestor for each element in an array.
- * @param{Array} elementArray.
- * @param{string} selector.
- * @returns{Array} new element array. 
- */
-export const eachClosest = (elementArray, selector) =>
-    elementArray.map(element => element.closest(selector));
-
-
-/** 
- * Get children as an Array.
- * @returns {Array} new element array. 
- */
-export const children = element => Array.from(element.children);
-
-/** 
- * Get childNode as an Array.
- * @returns {Array} new element array. 
- */
-export const childNodes = element => Array.from(element.childNodes);
 
 /** 
  * querySelectorAll as an Array
@@ -91,24 +112,7 @@ export const siblingsKeys = element => Array.from(element.parentElement.children
         return acc;
     }, []);
 
-/** 
- * Get specific descendent by generation.
- * @param {number} level - the generation by depth.
- * @returns {Object} element. 
- */
-export const descendent = (element, level) => {
-    let count = 0;
-    const getParent = node => {
-        count++;
-        const parent = node.parentElement;
-        if (count === level) {
-            return parent;
-        } else {
-            return getParent(parent);
-        }
-    }
-    return getParent(element);
-}
+
 
 /** 
  * @author Julien Etienne. 

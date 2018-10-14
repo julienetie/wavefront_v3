@@ -10,7 +10,6 @@ export default {
       jsnext: true,
       browser: true
     }),
-
     buble({
 	     target: { chrome: 61, firefox: 53, safari: 10, edge: 15 }
     }) 
