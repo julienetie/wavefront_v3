@@ -5,6 +5,9 @@
 </p>
 
 # WAVEFRONT
+
+![npm bundle size (minified)](https://img.shields.io/julienetie/wavefront/size.js.svg)
+
 [documentation](https://github.com/julienetie/wavefront/blob/master/documentation.md)
 
 ### A View Layer Engine For Creating Advanced Web User Interfaces
