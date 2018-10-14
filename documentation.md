@@ -147,5 +147,6 @@ const someList = [itemA, itemB, itemC];
 const items = eachContains(someList, 'span'); // [< .one >,< .two >,< .three >,< .four >,]
 ```
 
-# Wave-Architecture
+# Wave Architecture
+###### _Wave-Architecture_
 
