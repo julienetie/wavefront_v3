@@ -10,7 +10,7 @@
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](https://github.com/julienetie/wavefront/blob/master/LICENSE)[![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/react.svg?style=for-the-badge)](https://github.com/julienetie/wavefront/blob/master/setup/size/minified)[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/react.svg?style=for-the-badge)](https://github.com/julienetie/wavefront/blob/master/setup/size/minified.gz)
 
 
-[documentation](https://github.com/julienetie/wavefront/blob/master/documentation.md)
+[Documentation](https://github.com/julienetie/wavefront/blob/master/documentation.md)
 
 ### _An Advanced DOM View Layer_
 
