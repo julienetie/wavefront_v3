@@ -2,7 +2,7 @@
 _______________
 
 # Documentation
-##### API
+##### [API](#api)
 - [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
@@ -10,6 +10,8 @@ _______________
 - [What forces layout / reflow](https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
 
 
+
+# API
 <img src="https://github.com/julienetie/img/blob/master/wavefront-small.pdf.png?raw=true"/> 
 
 ## childNodes
