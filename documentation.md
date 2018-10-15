@@ -151,7 +151,7 @@ const items = eachContains(someList, 'span'); // [< .one >,< .two >,< .three >,<
 
 This is a set of explicit disciplines with the intention of not overcomplicating simple things so more time can be dedicated to the more advanced concepts when building graceful interactions.
 
-## Rendering rule 
+## Rendering
 ###### Render Once / Update Many
 Wavefront uses the native DOM to apply the inital-render and to further update the DOM. With the exception of using the [read](#) and (write)[#] wrappers for batching and [kill](#) for stopping a pending read or write. 
 
@@ -162,26 +162,29 @@ The Inital Render _(conceptual)_ is the first page render of the application or 
 - _or_ create components within the HTML document,  add them as wave components using i.e. [querySelector](#) and [addComponent](#)
 
 #### View Update  
-A view update is performed when you want to: 
+A view update _(conceptual)_ is performed when you want to: 
 - Insert new elements into the DOM
 - Remove elements from the DOM
 - Add, remove or modify attributes
 
 Updates should be batched using [write](#) to reduce layout thrashing. 
-> Reads and writes should be batched separately using [write](#) and [read](#) and can be used either as standalone functions, as nested functions or promises.
+> Reads and writes should be batched separately using [write](#) and [read](#) and can be used either as standalone functions, nested functions or promises.
 
-It's important to conceptualise initally rendering a page compared to modifying attributes or components because it allows you to create components that:
+Inital-render and view updates are definitions to prevent developers from treating their applications _React-like_. 
+Although you could use Wavefront in a _React-like_ way it's discouraged because:
+
+Because the Wave Architecure allows developers to create components that:
 - Can easily be updates asynchronously
 - Reduces how often you destroy components that will likely reappear
 - Allows you to modify individual properties and attributes without having to create different versions of a component
 - Requires no caching of the original instance because the process that created it is available in code
 
-The rules: 
-- The inital-render is the foundation for updates and should be rendered before updating.
-- Always wrap DOM updates using [read](#) and [write](#) especially if you are unaware if a change will trigger layout.
-- A single page application only requires one inital-render but the loading of a page or change of route can be considered as a new inital-render.
+###### Recap 
+- The inital-render is the foundation for updates and should be rendered before any update is processed.
+- Always wrap DOM updates using [read](#) and/or [write](#) especially if you are unaware if a change will trigger layout.
+- A single page application only requires one inital-render but the loading of a page or change of route can be considered as an inital-render.
 
-
+*****
 
 ```
 @param {string} CMD - A command.
