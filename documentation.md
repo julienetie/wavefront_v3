@@ -262,7 +262,7 @@ The view is a declarative template used by it's controller to create markupStrin
 - Static templates are declarative templates that are wrapped in an IIFE
 - Shared modules, models, events and other scripts are located in the root of the source dir.
 
-**
+*****
 ### Life Cycle
 
 Wavefront and the Wave Architecture elimintes the need for complex abstractions and pre-made hooks as there is no middle step protecting you from the "scary" DOM. Life-cycle hooks are useful in Virtual-DOM based libraries because of their limited frame-to-frame based component rendering.
