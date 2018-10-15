@@ -229,7 +229,7 @@ const props = {
 @param {...*} props
 @returns {Function} viewTemplate - a function that returns a string
 ```
-The view is a declarative template used by it's controller to cr.
+The view is a declarative template used by it's controller to create markupStrings or Elements.
 - **There should be absolutely no explicit logic performed within the view.**
 - A view can either be a single file or a directory of files.
 - A view is typically imported by it's controller but may be imported by external controllers.
