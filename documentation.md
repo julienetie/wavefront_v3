@@ -13,7 +13,23 @@ _______________
 - [Controller](#controller)
 - [View](#view)
 
-##### Resources
+###### Terminology 
+> - _**markupString:** A string representation of HTML, SVG or XML_
+> - _**Inital Render:** The first rendered template of an app, page or route_
+> - _**DOM Update:** An insertion, removal or attribute modification after the inital render.
+> - _**Component:** A complete UI entity  e.g. weather calendar_
+> - _**Named Element:** An element defined using a first-uppercased yponated name immediately following a tag name e.g. `<h1 Large-Heading>...</h1>`. This will register on the named element object `$`_
+> - _**Read:** Refers to reading from the DOM, which can often cause layout/reflow. Also known as **measure**_
+> - _**write:** Refers to modifying the DOM, which can often cause layout/reflow. Also known as **mutate**_
+> - _**Controller:** The logical part of a component_
+> - _**View:** The semantic/ presentational part of a component. Also known as a **declarative template**_
+> - _**props:** A single or multidimensonal object used as arguments for view/s of the component_
+> - _**beforeRender:** A conceptual subscription to the change of state before a particular or genreal DOM Update_
+> - _**afterRender:** A conceptual subscription to the change of state after a particular or general DOM Update_
+> - _**Mutation Observer:** A native way to observe changes to the DOM (Not part of the Wavefront API)_
+> - _**Event Delegation:** Share multiple handlers between a single event. Commonly on the document object_
+
+###### Resources
 - [What forces layout / reflow](https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
 
 
