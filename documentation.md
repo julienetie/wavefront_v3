@@ -13,6 +13,9 @@ _______________
 - [Controller](#controller)
 - [View](#view)
 - [Life Cycle](#life-cycle)
+- [Reading | Writing](#reading-and-writing)
+- [File Structure](#file-structure)
+- [Interactive UI Design Guidelines](#interactive-ui-design-guidelines)
 
 ###### Terminology 
 > - _**markupString:** A string representation of HTML, SVG or XML_
