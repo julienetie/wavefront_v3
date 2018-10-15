@@ -197,7 +197,7 @@ A component is a directory located within `./ui`. A component can be placed in t
 - One [View](#view) file or director
 *****
 
-### controller
+### Controller
 The controller is the logical part of the component. 
 - The controller can either be a single file or a directory of files. `side-bar-controller.js` | `side-bar-controller/`
 - The controller must import it's own view.
@@ -227,7 +227,7 @@ const props = {
 ```
 *****
 
-### view
+### View
 ```
 @param {...*} props
 @returns {Function} viewTemplate - a function that returns a string
