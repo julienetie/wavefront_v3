@@ -12,6 +12,7 @@ _______________
 - [Rendering](#rendering)
 - [Controller](#controller)
 - [View](#view)
+- [Life Cycle](#life-cycle)
 
 ###### Terminology 
 > - _**markupString:** A string representation of HTML, SVG or XML_
@@ -260,3 +261,19 @@ The view is a declarative template used by it's controller to create markupStrin
 - Components are directories, each UI component only contain 1 controller and 1 view. Components are located in the `/ui` directory that sits at the root of the project source. A component is imported into the actor via its controller.
 - Static templates are declarative templates that are wrapped in an IIFE
 - Shared modules, models, events and other scripts are located in the root of the source dir.
+
+**
+### Life Cycle
+
+Wavefront and the Wave Architecture elimintes the need for complex abstractions and pre-made hooks as there is no middle step protecting you from the "scary" DOM. Life-cycle hooks are useful in Virtual-DOM based libraries because of their frame-to-frame usage.
+
+Since wavefront is not a layer between modifying the DOM directly and since the native DOM is asyncronous you can choose to: 
+- Treat typical Virtual-DOM hooks as any ordinary state change
+- Create your own hooks specific to your application's general requirements 
+- Disregard hooks as there is no reverse nested component execution when nesting a markupString
+- Use the native MutationObserver which is far more powerful than post-render hooks found in common view-layer libraries
+
+#### Conceptual Hooks
+- beforeRender: refers to statechange subscriptions before a component is rendered to the DOM
+- afterRender: refers to statechange subscriptions after a component is rendered to the DOM
+- [MutationObserver](#) (native): A native way obtain detailed reporting of mutations made to the DOM afterRender
