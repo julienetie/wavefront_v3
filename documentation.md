@@ -9,6 +9,9 @@ _______________
 - [descendent](#descendent)
 
 ##### [Architecture](#wave-architecture)
+- [Rendering](#rendering)
+- [Controller](#controller)
+- [View](#view)
 
 ##### Resources
 - [What forces layout / reflow](https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
@@ -224,7 +227,7 @@ const props = {
 ```
 *****
 
-### views
+### view
 ```
 @param {...*} props
 @returns {Function} viewTemplate - a function that returns a string
@@ -237,7 +240,7 @@ The view is a declarative template used by it's controller to create markupStrin
 - Declarative templates _(view files)_ should only contain string values.
 - Once again: **There should be absolutely no explicit logic performed within the view.** no for loops, no if statements, no switch, no algorithms, only semantics and values.
 
-#### Formalities 
+###### Formalities 
 - Components are directories, each UI component only contain 1 controller and 1 view. Components are located in the `/ui` directory that sits at the root of the project source. A component is imported into the actor via its controller.
 - Static templates are declarative templates that are wrapped in an IIFE
 - Shared modules, models, events and other scripts are located in the root of the source dir.
