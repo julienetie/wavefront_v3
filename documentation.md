@@ -151,7 +151,7 @@ const items = eachContains(someList, 'span'); // [< .one >,< .two >,< .three >,<
 
 This is a set of explicit disciplines with the intention of not overcomplicating simple things so more time can be dedicated to the more advanced concepts when building graceful interactions.
 
-## Rendering
+### Rendering
 ###### Render Once / Update Many
 Wavefront uses the native DOM to apply the inital-render and to further update the DOM. With the exception of using the [read](#) and (write)[#] wrappers for batching and [kill](#) for stopping a pending read or write. 
 
@@ -185,53 +185,59 @@ Because the Wave Architecure allows developers to create components that:
 - A single page application only requires one inital-render but the loading of a page or change of route can be considered as an inital-render.
 
 *****
+### UI
+The `./ui` directory is where all the user interface specific code resides. The majority of an application will likely be contained within `./ui`. 
 
-```
-@param {string} CMD - A command.
-@param {...*} data - Any data type required for a component.
-``` 
-**The _Actor updates the cachedDOM then renders to the document_**. 
-- Most applications only require a single actor.
-- The actor can be called from anywhere explicitly except within the views.
-- The actor is parsed with a _command_ and optionally a _data_ parameter.
-- When the actor is called it compiles each UI component into a single _waveNode_ before rendering to the DOM.
-- The actor manages the caching of actions. Performance can be improved where data is predictable.
-- The actor module imports each component _(via its controller)_ to build the entire UI. 
-- The actor module can be an index file or a directory named `actor` at the root of the `./ui` directory.
-- If an actor's _renderTarget_ is expected to change it should be named _actorByTarget_
-- _actorByTarget's_ first parameter is an _HTMLElement_ followed by _CMD_ and _data_. 
+### Component
+A component is a directory located within `./ui`. A component can be placed in the root of `./ui` e.g.`./ui/left-side-bar` or nested in child directories e.g. `./ui/side-bars/left`. A component contains two constituents:
+- One [controller](#controller) file or directory
+- One [View](#view) file or director
+*****
 
-### controllers
+### controller
+The controller is the logical part of the component. 
+- The controller can either be a single file or a directory of files. `side-bar-controller.js` | `side-bar-controller/`
+- The controller must import it's own view.
+- The controller can also import external views.
+- `props` is an object or array that is passed as a view's argument.
+```javascript 
+const props = {
+   greeting: 'Hello World!',
+   count: 123
+}
 ```
-@param {string} CMD - A command passed from the act.
-@param {*} data - Any data type passed from the act.
-@returns {Object} - waveNode 
+- `props` can be a multidimensional object or array for multiple views in a controller that can reference it's self.
+```javascript 
+const props = {
+   sideBarFoot: <markupString>,
+   leftSideBar:{
+      greeting: 'Hello World!',
+      count: 123,
+      foot: props.sidebarFoot
+   },
+   rightSideBar:{
+      greeting: 'Hello World!',
+      count: 123,
+      foot: props.sidebarFoot
+   }
+}
 ```
-A controller takes _CMD_ and _data_ to perform logic for params, returns a waveNode created by the view and params.
-- A controller can either be a single file or a directory of files.
-- A component can only have one but a controller can import many view.
-- A controller imports "its" view, calls the view with props (Just object properties) and returns.
-- Controllers can only be imported by the actor or by other controllers (Which should be avoided)
-- tags should be imported from views and not directly used, not even for one off usage.
+*****
 
 ### views
 ```
 @param {...*} props
-@returns {Function} viewTemplate 
+@returns {Function} viewTemplate - a function that returns a string
 ```
-The view is a declarative template used by it's controller to create a waveNode.
+The view is a declarative template used by it's controller to cr.
 - **There should be absolutely no explicit logic performed within the view.**
 - A view can either be a single file or a directory of files.
-- A view is typically imported by one controller but may be imported by several controllers.
-- props (Preferably within an object) are passed to the view as tags, values and attribute values.
-- Conditional, looping and toggling logic are performed by the or(), loop() and toggle() tags. They optionally 
-can be performed directly by controller logic.
-- Declarative templates _(view files)_ should only contain tags and argument values. 
+- A view is typically imported by it's controller but may be imported by external controllers.
+- props (Preferably within an object) are passed to the view as values.
+- Declarative templates _(view files)_ should only contain string values.
 - Once again: **There should be absolutely no explicit logic performed within the view.** no for loops, no if statements, no switch, no algorithms, only semantics and values.
 
-#### Other formalities 
+#### Formalities 
 - Components are directories, each UI component only contain 1 controller and 1 view. Components are located in the `/ui` directory that sits at the root of the project source. A component is imported into the actor via its controller.
 - Static templates are declarative templates that are wrapped in an IIFE
 - Shared modules, models, events and other scripts are located in the root of the source dir.
-
-That's the entire Wavefront Architecure.
