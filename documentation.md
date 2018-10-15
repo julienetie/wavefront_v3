@@ -153,17 +153,22 @@ This is a set of explicit disciplines with the intention of not overcomplicating
 
 ## Rendering rule 
 ###### Render Once / Update Many
-Rendering in wavefront is common sense and far more relaxed when compared to other view-layer libraries.
-##### Inital Instance
-An inital insance is the render that is first performed when the application launches or maybe when a route is changed. **It's not React-like** to render a page you could:
-- Create components using [wave](#) > and append/ insert them into the DOM using DOM methods like [append](#)
-- or Create components in the HTML document > add them as wave components using DOM methods like [querySelector](#)
-- Once the components have been modified you can then render them to the page using DOM methods like [append](#)
-This is how you perform inital renders, there is nothing more to it. 
+Wavefront uses the native DOM to apply the inital-render and to further update the DOM. With the exception of using the [read](#) and (write)[#] wrappers for batching and [kill](#) for stopping a pending read or write. 
+
+##### Inital-Render 
+The Inital Render _(conceptual)_ is the first page render of the application or when a route or inner page section is changed.
+#### Creating an inital-render
+- Create components using [wave](#) > then use a DOM method i.e. [appendChild](#) to insert into the DOM
+- _or_ create components within the HTML document,  add them as wave components using i.e. [querySelector](#) and [addComponent](#)
 
 #### View Update  
-A view update is performed when you want to insert a new element or modify a component that is already part of the DOM.- Updates should be batched using [write](#) to reduce layout thrashing
-- Reads and writes should be batched separately using [write](#) and [read](#) and can be used either as standalone functions, as nested functions as promises.
+A view update is performed when you want to: 
+- Insert new elements into the DOM
+- Remove elements from the DOM
+- Add, remove or modify attributes
+
+Updates should be batched using [write](#) to reduce layout thrashing. 
+> Reads and writes should be batched separately using [write](#) and [read](#) and can be used either as standalone functions, as nested functions or promises.
 
 It's important to conceptualise initally rendering a page compared to modifying attributes or components because it allows you to create components that:
 - Can easily be updates asynchronously
