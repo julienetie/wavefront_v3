@@ -265,9 +265,9 @@ The view is a declarative template used by it's controller to create markupStrin
 **
 ### Life Cycle
 
-Wavefront and the Wave Architecture elimintes the need for complex abstractions and pre-made hooks as there is no middle step protecting you from the "scary" DOM. Life-cycle hooks are useful in Virtual-DOM based libraries because of their frame-to-frame usage.
+Wavefront and the Wave Architecture elimintes the need for complex abstractions and pre-made hooks as there is no middle step protecting you from the "scary" DOM. Life-cycle hooks are useful in Virtual-DOM based libraries because of their limited frame-to-frame based component rendering.
 
-Since wavefront is not a layer between modifying the DOM directly and since the native DOM is asyncronous you can choose to: 
+Since the native DOM is asyncronous you can choose to: 
 - Treat typical Virtual-DOM hooks as any ordinary state change
 - Create your own hooks specific to your application's general requirements 
 - Disregard hooks as there is no reverse nested component execution when nesting a markupString
