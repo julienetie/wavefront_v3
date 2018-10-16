@@ -20,7 +20,7 @@ _______________
 ###### Terminology 
 > - _**markupString:** A string representation of HTML, SVG or XML_
 > - _**Inital Render:** The first rendered template of an app, page or route_
-> - _**DOM Update:** An insertion, removal or attribute modification after the inital render_
+> - _**View Update:** An insertion, removal or attribute modification after the inital render_
 > - _**Component:** A complete UI entity  e.g. weather calendar_
 > - _**Named Element:** An element defined using a first-uppercased yponated name immediately following a tag name e.g. `<h1 Large-Heading>...</h1>`. This will register on the named element object `$`_
 > - _**Read:** Refers to reading from the DOM, which can often cause layout/reflow. Also known as **measure**_
