@@ -32,7 +32,7 @@ export const hypenatedToCamelCase = string => {
 /** 
  * Creates a document fragment from a given DOM string.
  */
-export const createFragment = DOMstring => document.createRange().createContextualFragment(DOMstring);
+export const createFragment = markupString => document.createRange().createContextualFragment(markupString);
 /** 
  * Checks to see if the first character is uppercase.
  * @param {string} string

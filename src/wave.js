@@ -18,7 +18,7 @@ export default (strings, ...tags) => {
     const dataNamePrefix = store.config.dataNamePrefix;
     const dataNamePrefixIndexLength = dataNamePrefix  !== null ? dataNamePrefix.length + 6 : 5;
 
-    const DOMstring = strings.raw.reduce((acc, value, i, data) => {
+    const markupString = strings.raw.reduce((acc, value, i, data) => {
         let tag = tags[i];
         if (tag instanceof Element) {
             acc.elements[i] = tag;
@@ -39,9 +39,9 @@ export default (strings, ...tags) => {
         elements: {}
     });
 
-    DOMstring.preSting = DOMstring.preSting.join('');
+    markupString.preSting = markupString.preSting.join('');
 
-    const componentNames = DOMstring.preSting.split('<')
+    const componentNames = markupString.preSting.split('<')
         .map((value, i) => i === 0 ? value : '<' + value)
         // Remove non-tags
         .filter((value, i, data) => {
@@ -83,13 +83,13 @@ export default (strings, ...tags) => {
         const pattern = new RegExp(name);
         const dataName = dataNamePrefix === null ? 'data-' + nameLowerCase : `data-${dataNamePrefix}-${nameLowerCase}`;
         console.log('dataName', dataName)
-        acc.DOMstring = acc.DOMstring.replace(pattern, dataName);
+        acc.markupString = acc.markupString.replace(pattern, dataName);
         acc.dataNames.push(dataName);
         return acc;
-    }, { DOMstring: DOMstring.preSting, dataNames: [] });
+    }, { markupString: markupString.preSting, dataNames: [] });
 
-    const html = createFragment(prep.DOMstring);
-    const els = DOMstring.elements;
+    const html = createFragment(prep.markupString);
+    const els = markupString.elements;
 
     Object.entries(els).map(entry => {
         const [key, element] = entry;
@@ -103,9 +103,7 @@ export default (strings, ...tags) => {
     const parentName = componentNames[0] || '';
 
     const componentElements = prep.dataNames.reduce((acc, value, i) => {
-        console.log('dataNamePrefixIndexLength', dataNamePrefixIndexLength)
         const hypenated = value.slice(dataNamePrefixIndexLength);
-        console.log('hypenated', hypenated)
         const name = hypenatedToCamelCase(componentNames[i]);
         const element = html.querySelector(`[${value}]`);
 
