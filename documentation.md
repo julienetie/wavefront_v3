@@ -33,6 +33,10 @@ _______________
 - [cycle]
 - [elevate]
 
+###### Shorthand 
+- computedStyle `= (element, propery) => window.getComputedStyle(element, null).getPropertyValue(property)`
+- measure `= (element, propery) => element.getBoundingClientRect()[property]`
+
 ##### [Architecture](#wave-architecture)
 - [Rendering](#rendering)
 - [Controller](#controller)
