@@ -20,7 +20,7 @@ export default (strings, ...tags) => {
 
     const markupString = strings.raw.reduce((acc, value, i, data) => {
         let tag = tags[i];
-        console.log('value', value)
+
         if (tag instanceof Element) {
             acc.elements[i] = tag;
             tag = '<div id="_WaveTag__' + i + '"></div>';
@@ -41,7 +41,7 @@ export default (strings, ...tags) => {
     });
     const hashName = markupString.preSting[0].match(/^#[a-zA-Z-]+/);
     const namespace = isArray(hashName) ? hypenatedToCamelCase(hashName[0].substr(1)) : null; 
-    console.log('namespace', namespace)
+
     if(namespace !== null && store.$[namespace] === undefined){
         store.$[namespace] = {};
     }
@@ -89,7 +89,6 @@ export default (strings, ...tags) => {
         const nameLowerCase = name.toLowerCase();
         const pattern = new RegExp(name);
         const dataName = dataNamePrefix === null ? 'data-' + nameLowerCase : `data-${dataNamePrefix}-${nameLowerCase}`;
-        console.log('dataName', dataName)
         acc.markupString = acc.markupString.replace(pattern, dataName);
         acc.dataNames.push(dataName);
         return acc;
