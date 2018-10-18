@@ -108,7 +108,7 @@ export default (strings, ...tags) => {
     const firstElementChild = html.firstElementChild;
     const parentName = componentNames[0] || '';
 
-    const componentElements = prep.dataNames.reduce((acc, value, i) => {
+    const elements = prep.dataNames.reduce((acc, value, i) => {
         const hypenated = value.slice(dataNamePrefixIndexLength);
         const name = hypenatedToCamelCase(componentNames[i]);
         const element = html.querySelector(`[${value}]`);
@@ -125,6 +125,5 @@ export default (strings, ...tags) => {
         acc[name] = element;
         return acc;
     }, {});
-
-    return firstElementChild;   
+    return Object.keys(elements).length === 0 ? firstElementChild : elements;
 }
