@@ -9,7 +9,7 @@ _______________
 - [children](#children)
 - [descendent](#descendent)
 - [eachClosest](#eachClosest)
-- [eachContains](#eachContains)
+- [eachContains]
 - [siblings]
 - [siblingsKeys]
 
