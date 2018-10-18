@@ -4,12 +4,34 @@ _______________
 # Documentation
 ##### [API](#api)
 
+###### Element Arrays
 - [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
 - [eachClosest](#eachClosest)
 - [eachContains](#eachContains)
+- [siblings]
+- [siblingsKeys]
+
+###### Element Queries 
+- [queryEach]
+- [queryEachAll]
+- [queryAll]
+
+###### Element Creation
 - [wave](#wave)
+
+###### Batched Reads and Writes
+- [kill]
+- [read]
+- [write]
+
+###### Styling
+- [style]
+- [swap] 
+- [toggle]
+- [cycle]
+- [elevate]
 
 ##### [Architecture](#wave-architecture)
 - [Rendering](#rendering)
