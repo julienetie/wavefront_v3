@@ -22,7 +22,7 @@ export const children = element => Array.from(element.children);
 /** 
  * Get specific descendent by generation.
  * @param {number} level - the generation by depth.
- * @returns {Object} element. 
+ * @return {Object} element. 
  */
 export const descendent = (element, level) => {
     let count = 0;
@@ -40,12 +40,22 @@ export const descendent = (element, level) => {
 
 /** 
  * Get the matching ancestor for each element in an array.
- * @param{Array} elementArray.
- * @param{string} selector.
- * @returns{Array} new element array. 
+ * @param {Array} elementArray.
+ * @param {string} selector.
+ * @return {Array} new element array. 
  */
 export const eachClosest = (elementArray, selector) =>
     elementArray.map(element => element.closest(selector));
+
+/** 
+ * Get the matching contained element for each element in an array.
+ * @param {Array} elementArray.
+ * @param {string} selector.
+ * @return {Array} new element array. 
+ */
+export const eachContains = (elementArray, selector) =>
+    elementArray.map(element => element.querySelectorAll(selector));
+
 
 /** 
  * Optimised reads.
@@ -203,10 +213,3 @@ export const elevate = (element, style, zIndex, callback) => {
     // 1. Set style.
     write(() => void aquire(element.style, style));
 }
-
-
-/** 
- * @param {string} strings - String parts of the template literal.
- * @returns {Object} - Element.
- */
-export const stringToWave = DOMString => wave `${DOMString}`;

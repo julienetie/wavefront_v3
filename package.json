@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/rollup -c ./setup/build.js",
-    "watch": "http-server ./ | npm run size | ./node_modules/.bin/rollup -c ./setup/build.js -w",
+    "watch": "http-server ./ | ./node_modules/.bin/rollup -c ./setup/build.js -w",
     "size": "./node_modules/.bin/rollup -c ./setup/size.js && gzip -k -f ./setup/size/minified"
   },
   "dependencies": {

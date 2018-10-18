@@ -20,6 +20,7 @@ export default (strings, ...tags) => {
 
     const markupString = strings.raw.reduce((acc, value, i, data) => {
         let tag = tags[i];
+        console.log('value', value)
         if (tag instanceof Element) {
             acc.elements[i] = tag;
             tag = '<div id="_WaveTag__' + i + '"></div>';
@@ -38,6 +39,12 @@ export default (strings, ...tags) => {
         preSting: [],
         elements: {}
     });
+    const hashName = markupString.preSting[0].match(/^#[a-zA-Z-]+/);
+    const namespace = isArray(hashName) ? hypenatedToCamelCase(hashName[0].substr(1)) : null; 
+    console.log('namespace', namespace)
+    if(namespace !== null && store.$[namespace] === undefined){
+        store.$[namespace] = {};
+    }
 
     markupString.preSting = markupString.preSting.join('');
 
@@ -111,11 +118,14 @@ export default (strings, ...tags) => {
                 .some(value => value === name || value === hypenated))) {} else {
             element.removeAttribute(value);
         }
-
-        store.components[name] = element;
+        if(namespace === null){
+            store.$[name] = element;    
+        }else{
+            store.$[namespace][name] = element;
+        }
         acc[name] = element;
         return acc;
     }, {});
 
-    return firstElementChild;
+    return firstElementChild;   
 }

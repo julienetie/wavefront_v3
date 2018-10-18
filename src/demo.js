@@ -1,15 +1,17 @@
-const { wave, components, stringToWave, config, aquire, read, write } = wavefront;
+import { wave, $, config, aquire, read, write } from '../dist/wavefront.js';
+
+// const { wave, components, stringToWave, config, aquire, read, write } = wavefront;
 
 // config.namesAsDataAttributes = ['covered-count', 'model-coverage'];
 // config.dataNamePrefix = 'say-what';
-// config = {}
+// config = {}fe
 config({
     // namesAsDataAttributes:['covered-count', 'model-coverage'],
     // dataNamePrefix: 'whteva'
 })
 
-console.log('config', config)
-const modelCoverage = () => `
+// console.log('config', config)
+const modelCoverage = () => `#Side-Bar
     <div Model-Coverage class="zap">
         <div class="something">
             <div class="other things">
@@ -22,9 +24,9 @@ const modelCoverage = () => `
         </div>
     </div>`
 
- const el = stringToWave(modelCoverage);
+ const el = wave `${modelCoverage()}`;
  document.body.append(el);
-const {modelCoverageTotal} = components;
+const {modelCoverageTotal} = $.sideBar;
 
     async function d (){
         let blowTalk;
@@ -38,7 +40,7 @@ const {modelCoverageTotal} = components;
     }
     d();
 
-
+console.log('%', $)
 // read(()=> {
 //     console.log('@',modelCoverageTotal.textContent)
 //     return 

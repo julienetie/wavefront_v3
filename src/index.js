@@ -12,7 +12,6 @@ import {
     read,
     siblings,
     siblingsKeys,
-    stringToWave,
     style,
     swap,
     toggle,
@@ -20,14 +19,12 @@ import {
 } from './api-tools';
 import wave from './wave';
 import store from './store';
-const components = store.components;
-const $ = components;
+const $ = store.$;
 const config = config => aquire(store.config, config);
 export {
     aquire,
     childNodes,
     children,
-    components,
     descendent,
     config,
     cycle,
@@ -39,7 +36,6 @@ export {
     read,
     siblings,
     siblingsKeys,
-    stringToWave,
     style,
     swap,
     toggle,
