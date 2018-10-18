@@ -7,6 +7,8 @@ _______________
 - [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
+- [eachContains](#eachContains)
+- [wave](#wave)
 
 ##### [Architecture](#wave-architecture)
 - [Rendering](#rendering)
@@ -179,19 +181,20 @@ const items = eachContains(someList, 'span'); // [< .one >,< .two >,< .three >,<
 > * @param {Array} strings - A template literal strings argument
 > * @param {Array} tags - An array of tags
 > * @return {Object} An Element or node  
-> ###### Examples:
-1.1 The wave function invokes an adjacent tagged template. Below is a simple hello world:
+###### Examples:
+1.1 The wave function invokes an adjacent tagged template. Below is a complete hello world example:
 ```javascript
-import { $, wave } from 'wavefront';
+import {wave } from 'wavefront';
 
 const greeting = wave `<h1>Hello World!</h1>`;
 document.body.appendChild(greeting);
 ```
-1.2 Let's say hello world is a nested element. We can obtain obtain it by naming the element. 
+1.2 Let's say hello world is a nested element. Rather than using something like querySelector We can instead reference it simply by naming the element. 
 > A **namedElement** must: 
-> - Placed immediately after an opening tag, before any attributes
-> - Each word must start with an uppercase letter
-> - If more than one, each word must be separated by a hyphen
+> - Be placed immediately after an opening tag and before any attribute
+> - start each word with an uppercase letter
+> - Have each word start with an uppercased letter
+> - Have each word separated by a hyphen if using more than one 
 
 ```javascript
 import { $, wave } from 'wavefront';
@@ -204,8 +207,8 @@ const { greeting } = wave `
 
 document.body.appendChild(greeting);
 ```
-2. Once an element has been named it can be accessed via the element registry object.
-The example below is the same as the example above:
+2. Once an element has been named it can be accessed via the element registry object `$` or `elementRegistry`.
+The example below is the same as above:
 ```javascript
 import { $, wave } from 'wavefront';
 
@@ -217,13 +220,13 @@ wave `
 const { greeting } = $; 
 document.body.appendChild(greeting);
 ```
-3. Consider named **namedElement** as constituents-of-components_. As your project grows you may have dozens or even
-thousands of _namedElements_ which can become hard to manage using the above. The _wave_ function allows you to define one **namespace** for each declarative template. Once defined each namedElement in the template will be namespaced.  
-> A **namespace** must 
-- Be placed immediately before the first tag within a declarative template
-- Be prefixed with a hash
-- Have each word start with an uppercased letter
-- have each word separated by a hyphen if using more than one 
+3.1 Consider a **_namedElement_**s as constituents-of-components_. A project may have dozens or even
+thousands of _namedElements_ which can become hard to manage using the above. _wave_ allows you to define one **namespace** for each declarative template. Once defined each namedElement in the template will be namespaced.
+> A **namespace** must
+> - Be placed immediately before the first tag within a declarative template
+> - Be prefixed with a hash
+> - Have each word start with an uppercased letter
+> - Have each word separated by a hyphen if using more than one 
 
 ```javascript
 import { $, wave, write} from 'wavefront';
@@ -241,6 +244,44 @@ write(()=> greeting.style.color = 'red')
   document.body.appendChild(main);
 });
 ```
+
+3.2 Therefore for every occasion you use `wave` you are allowed to impact nested elements to be assinged to one namespace.
+If you want nest an already namespece child you simply need to ensure you are using `wave` on that child as well as the parent/s.
+
+```javascript
+import { $, wave} from 'wavefront';
+
+const childThing = wave `#Child-Thing
+<div Item-A>
+  <div Item-B></div>
+  <div Item-C></div>
+  ${someChild}
+  <div>This is not referenced</div>
+</div>`;
+
+const parentThing = someChild => wave `#Parent-Thing
+<div Item-A>
+  <div Item-B></div>
+  <div Item-C></div>
+  ${someChild}
+  <div>This is not referenced</div>
+</div>`;
+
+${itemA} = parentThing(childThing);
+console.log(itemA) // Item-A of Parent-Thing
+console.log($) /*
+$
+  .parentThing
+    .itemA -> Element
+    .itemB -> Element
+    .itemC -> Element
+  .childThing
+    .itemA -> Element
+    .itemB -> Element
+    .itemC -> Element
+*/
+```
+3.3 `wave` will allow you to nest markupStrings, Elements and arrays containing markupStrings or Elements. Names and namespaces are not rendered to the DOM by default but can be made to using config.  
 
 > ###### JavaScript In Example:
 > * [firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
