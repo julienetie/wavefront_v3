@@ -22,7 +22,7 @@ _______________
 > - _**Inital Render:** The first rendered template of an app, page or route_
 > - _**View Update:** An insertion, removal or attribute modification after the inital render_
 > - _**Component:** A complete UI entity  e.g. weather calendar_
-> - _**Named Element:** An element defined using a first-uppercased yponated name immediately following a tag name e.g. `<h1 Large-Heading>...</h1>`. This will register on the named element object `$`_
+> - _**namedElement:** An element defined using a first-uppercased yponated name immediately following a tag name e.g. `<h1 Large-Heading>...</h1>`. This will register on the named element object `$`_
 > - _**Read:** Refers to reading from the DOM, which can often cause layout/reflow. Also known as **measure**_
 > - _**write:** Refers to modifying the DOM, which can often cause layout/reflow. Also known as **mutate**_
 > - _**Controller:** The logical part of a component_
@@ -169,6 +169,86 @@ const { itemA, itemB, itemC } = components;
 const someList = [itemA, itemB, itemC];
 const items = eachContains(someList, 'span'); // [< .one >,< .two >,< .three >,< .four >,]
 ```
+
+
+## wave 
+- **_Creates an element from a declarative template_**
+- **_Registers named-elements to the element registry object $_**
+- **_Or registers named-elements to a given namespace_**
+
+> * @param {Array} strings - A template literal strings argument
+> * @param {Array} tags - An array of tags
+> * @return {Object} An Element or node  
+> ###### Examples:
+1.1 The wave function invokes an adjacent tagged template. Below is a simple hello world:
+```javascript
+import { $, wave } from 'wavefront';
+
+const greeting = wave `<h1>Hello World!</h1>`;
+document.body.appendChild(greeting);
+```
+1.2 Let's say hello world is a nested element. We can obtain obtain it by naming the element. 
+> A **namedElement** must: 
+> - Placed immediately after an opening tag, before any attributes
+> - Each word must start with an uppercase letter
+> - If more than one, each word must be separated by a hyphen
+
+```javascript
+import { $, wave } from 'wavefront';
+
+const { greeting } = wave `
+  <header Main-Header>
+    <h1 Greeting>Hello World!</h1>
+    <h2>How are you?</h2> 
+  </header>`;
+
+document.body.appendChild(greeting);
+```
+2. Once an element has been named it can be accessed via the element registry object.
+The example below is the same as the example above:
+```javascript
+import { $, wave } from 'wavefront';
+
+wave `
+  <header Main-Header>
+    <h1 Greeting>Hello World!</h1>
+    <h2>How are you?</h2> 
+  </header>`;
+const { greeting } = $; 
+document.body.appendChild(greeting);
+```
+3. Consider named **namedElement** as constituents-of-components_. As your project grows you may have dozens or even
+thousands of _namedElements_ which can become hard to manage using the above. The _wave_ function allows you to define one **namespace** for each declarative template. Once defined each namedElement in the template will be namespaced.  
+> A **namespace** must 
+- Be placed immediately before the first tag within a declarative template
+- Be prefixed with a hash
+- Have each word start with an uppercased letter
+- have each word separated by a hyphen if using more than one 
+
+```javascript
+import { $, wave, write} from 'wavefront';
+
+const { greeting } = wave `#ThisIsAHeading
+  <header Main>
+    <h1 Greeting>Hello World!</h1>
+    <h2>How are you?</h2> 
+  </header>`;
+
+const {main, greeting} = $.thisIsAHeading;
+
+write(()=> greeting.style.color = 'red')
+.then(()=>{
+  document.body.appendChild(main);
+});
+```
+
+> ###### JavaScript In Example:
+> * [firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
+> * [wholeText](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
+> * [trimEnd](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd)
+> ###### Note:
+> * To obtain an ancestor by selector consider: [closest](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
+> * To know if an element is a descendent of an element consider: [contains](https://developer.mozilla.org/en-US/docs/Web/API/Node/contains), [querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) and [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
 
 # Wave Architecture
 
