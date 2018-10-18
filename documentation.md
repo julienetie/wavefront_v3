@@ -7,6 +7,7 @@ _______________
 - [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
+- [eachClosest](#eachClosest)
 - [eachContains](#eachContains)
 - [wave](#wave)
 
