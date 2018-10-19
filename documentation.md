@@ -5,6 +5,7 @@ _______________
 ##### [API](#api)
 
 ###### Array Collections
+
 - [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
@@ -87,9 +88,6 @@ document.body.appendChild(greeting);
 document.body.insertBefore(question,greeting);
 const items = childNodes(document.body); // greeting & question
 ```
-> ###### JavaScript In Example:
-> * [appendChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
-> * [insertBefore](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore)
 
 > ###### Note:
 > * This is just shorthand for [...elementNodeReference.childNodes]. See [childNodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes)
@@ -108,8 +106,6 @@ const question = wave `<div class="question">How are you?</div>`;
 document.body.append(greeting, question);
 const items = children(document.body); // greeting & question
 ```
-> ###### JavaScript In Example:
-> * [append](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append)
 > ###### Note:
 > * This is just shorthand for [...ParentNode.children]. See [children](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children)
 
@@ -136,10 +132,6 @@ read(() => {
   console.log(descendent2 === $.Sarah) // true
 });
 ```
-> ###### JavaScript In Example:
-> * [firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
-> * [wholeText](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
-> * [trimEnd](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd)
 > ###### Note:
 > * To obtain an ancestor by selector consider: [closest](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
 > * To know if an element is a descendent of an element consider: [contains](https://developer.mozilla.org/en-US/docs/Web/API/Node/contains), [querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) and [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
@@ -172,33 +164,49 @@ const { one, two, three, four } = components;
 const someList = [one, two, three, four];
 const items = eachClosest(someList, '[data-item]'); // [< .a >,< .b >,< .b >,< .c >,]
 ```
-## eachContains TBA
+## eachContains
 ##### _Get the matching contained element for each element in an array_
-> * @param {Array} elementArray.
-> * @param {string} selector.
-> * @return {Array} new element array. 
-> ###### Example:
+> * @param {Array} parents - An array of parent selectors to query.
+> * @param {string} selector - A string selector to query
+> * @param {Boolean} shouldFlatten - The last parameter of selectors that determines the format of the results. 
+> * @return {Array} new element array flat or 3d 
+###### Example:
 
 ```javascript
-import { eachClosest, wave, components } from 'wavefront';
+import { eachClosest, wave } from 'wavefront';
 
-wave `
-  <ul>
-    <li Item-A>
-        <span clas="one">One</span>
-        <span clas="two">Two</span>
-    </li>
-    <li Item-B>
-        <span clas="three">Three</span>
-    </li>
-    <li Item-C>
-        <span clas="four">Four</span>
-    </li>
-  </ul>`;
+const parts = wave `
+  <div One>
+    <div>
+      <span class="test1 A">A1</span>
+      <span class="test2 A">A2</span>
+      <span class="test3 A">A3</span>
+    </div>
+  </div>
 
-const { itemA, itemB, itemC } = components;
-const someList = [itemA, itemB, itemC];
-const items = eachContains(someList, 'span'); // [< .one >,< .two >,< .three >,< .four >,]
+<div Two>
+  <div>
+    <span class="test1 B">B1</span>
+    <span class="test2 B">B2</span>
+    <span class="test2 B">B2</span>
+    <span class="test3 B">B3</span>
+  </div>
+</div>
+
+<div Three>
+  <div>
+    <span class="test1 C">C1</span>
+    <span class="test2 C">C2</span>
+    <span class="test3 C">C3</span>
+  </div>
+</div>
+`;
+
+
+const parents = Object.values(parts);
+const itemsFlat = eachContains(parents,'.test1', '.test2', true); // [<A1>,<A2>,<B1>,<B2>,<C1>,<C2>]
+const items = eachContains(parents,'.test1', '.test2', true); // [[[<A1>],[<A2>]],[[<B1>],[<B2>,<B2>]],[[<C1>],[<C2>]]]
+
 ```
 
 
@@ -312,10 +320,6 @@ $
 ```
 3.3 `wave` will allow you to nest markupStrings, Elements and arrays containing markupStrings or Elements. Names and namespaces are not rendered to the DOM by default but can be made to using config.  
 
-> ###### JavaScript In Example:
-> * [firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild)
-> * [wholeText](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
-> * [trimEnd](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd)
 > ###### Note:
 > * To obtain an ancestor by selector consider: [closest](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
 > * To know if an element is a descendent of an element consider: [contains](https://developer.mozilla.org/en-US/docs/Web/API/Node/contains), [querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) and [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
