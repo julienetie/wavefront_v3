@@ -10,7 +10,7 @@ _______________
 - [children](#children)
 - [descendent](#descendent)
 - [eachClosest](#eachClosest)
-- [eachContains]
+- [eachContains](#eachContains)
 - [siblings]
 - [siblingsKeys]
 
@@ -207,6 +207,28 @@ const parents = Object.values(parts);
 const itemsFlat = eachContains(parents,'.test1', '.test2', true); // [<A1>,<A2>,<B1>,<B2>,<C1>,<C2>]
 const items = eachContains(parents,'.test1', '.test2', true); // [[[<A1>],[<A2>]],[[<B1>],[<B2>,<B2>]],[[<C1>],[<C2>]]]
 
+```
+## siblings
+##### _Returns an array of siblings_
+> * @param {Element} element
+> * @return {Array} sibling
+
+###### Example:
+
+```javascript
+import { eachClosest, wave } from 'wavefront';
+
+const { c } = wave `
+  <ul>
+    <li A>A</li>
+    <li B>B</li>
+    <li C>C</li>
+    <li D>D</li>
+  </ul>
+`;
+
+
+const allSiblings = siblings(c); // [<A>,<B>,<D>]
 ```
 
 
