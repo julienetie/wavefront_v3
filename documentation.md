@@ -5,7 +5,6 @@ _______________
 ##### [API](#api)
 
 ###### Array Collections
-
 - [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
