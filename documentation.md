@@ -11,8 +11,8 @@ _______________
 - [descendent](#descendent)
 - [eachClosest](#eachClosest)
 - [eachContains](#eachContains)
-- [siblings]
-- [siblingsKeys]
+- [siblings](#siblings)
+- [siblingsEntries](#siblingsEntries)
 
 ###### Array Queries 
 - [queryEach](#queryEach)
@@ -144,7 +144,7 @@ read(() => {
 > ###### Example:
 
 ```javascript
-import { eachClosest, wave, components } from 'wavefront';
+import { eachClosest, wave, $ } from 'wavefront';
 
 wave `
   <ul>
@@ -160,7 +160,7 @@ wave `
     </li>
   </ul>`;
 
-const { one, two, three, four } = components;
+const { one, two, three, four } = $;
 const someList = [one, two, three, four];
 const items = eachClosest(someList, '[data-item]'); // [< .a >,< .b >,< .b >,< .c >,]
 ```
@@ -173,7 +173,7 @@ const items = eachClosest(someList, '[data-item]'); // [< .a >,< .b >,< .b >,< .
 ###### Example:
 
 ```javascript
-import { eachClosest, wave } from 'wavefront';
+import { eachContains, wave } from 'wavefront';
 
 const parts = wave `
   <div One>
@@ -216,7 +216,7 @@ const items = eachContains(parents,'.test1', '.test2', true); // [[[<A1>],[<A2>]
 ###### Example:
 
 ```javascript
-import { eachClosest, wave } from 'wavefront';
+import { siblings, wave } from 'wavefront';
 
 const { c } = wave `
   <ul>
@@ -227,10 +227,29 @@ const { c } = wave `
   </ul>
 `;
 
-
 const allSiblings = siblings(c); // [<A>,<B>,<D>]
 ```
+## siblingsEntries
+##### _Returns an array indexe and element pairs per sibling 
+> * @param {Element} element
+> * @return {Array} sibling
 
+###### Example:
+
+```javascript
+import { siblingsEntries, wave } from 'wavefront';
+
+const { c } = wave `
+  <ul>
+    <li A>A</li>
+    <li B>B</li>
+    <li C>C</li>
+    <li D>D</li>
+  </ul>
+`;
+
+const allSiblings = siblingsEntries(c); // [[0,<A>],[1,<B>],[2,<D>]]
+```
 
 ## wave 
 - **_Creates an element from a declarative template_**
