@@ -1,8 +1,6 @@
+# API
 
-_______________
-
-# Documentation
-##### [API](#api)
+##### [Wavefront API](#Wavefront API)
 
 ###### Array Collections
 - [childNodes](#childNodes)
@@ -35,7 +33,7 @@ _______________
 - computedStyle `= (element, propery) => window.getComputedStyle(element, null).getPropertyValue(property)`
 - measure `= (element, propery) => element.getBoundingClientRect()[property]`
 
-# API
+# Wavefront API
 <img src="https://github.com/julienetie/img/blob/master/wavefront-small.pdf.png?raw=true"/> 
 
 >## Array Collections
