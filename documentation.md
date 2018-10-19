@@ -12,8 +12,6 @@ _______________
 - [eachContains](#eachContains)
 - [siblings](#siblings)
 - [siblingsEntries](#siblingsEntries)
-
-###### Array Queries 
 - [queryEach](#queryEach)
 - [queryEachAll]
 - [queryAll]
