@@ -4,7 +4,7 @@ _______________
 # Documentation
 ##### [API](#api)
 
-###### Element Arrays
+###### Array Collections
 - [childNodes](#childNodes)
 - [children](#children)
 - [descendent](#descendent)
@@ -13,20 +13,20 @@ _______________
 - [siblings]
 - [siblingsKeys]
 
-###### Element Queries 
-- [queryEach]
+###### Array Queries 
+- [queryEach](#queryEach)
 - [queryEachAll]
 - [queryAll]
 
-###### Element Creation
+###### Element Creation and Management
 - [wave](#wave)
 
-###### Batched Reads and Writes
+###### Batched Asynchronous Reads and Writes
 - [kill]
 - [read]
 - [write]
 
-###### Styling
+###### Styling Helpers
 - [style]
 - [swap] 
 - [toggle]
@@ -69,6 +69,8 @@ _______________
 
 # API
 <img src="https://github.com/julienetie/img/blob/master/wavefront-small.pdf.png?raw=true"/> 
+
+>## Array Collections
 
 ## childNodes
 ##### _Get childNodes as an array_
