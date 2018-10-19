@@ -1,6 +1,6 @@
 # API
 
-##### [Wavefront API](#Wavefront-API)
+##### [Wavefront API](#wavefront-api)
 
 ###### Array Collections
 - [childNodes](#childNodes)
