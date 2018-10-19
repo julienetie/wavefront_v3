@@ -1,6 +1,6 @@
 # Architecture
 
-##### [Wave-Architecture](#wave-architecture)
+##### [Wave_Architecture](#wave-architecture)
 - [Rendering](#rendering)
 - [Controller](#controller)
 - [View](#view)
