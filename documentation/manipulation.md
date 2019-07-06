@@ -1,4 +1,4 @@
-##### [Manipulation API](#manipulation)
+# Manipulation API
 > Methods for manipulating the DOM
 
 ##### [Animations](#animations)
@@ -6,11 +6,13 @@
   - [transitionEnd](#transitionend)
   - [observeMutation](#observemutation)
 ___
+
 ##### [Nodes and Elements](#nodes-and-elements)
 > Animation helpers
   - [transitionEnd](#transitionend)
   - [observeMutation](#observemutation)
 ___
+
 ##### [Array Collections](#array-collections)
 > Animation helpers
   - [childNodes](#childNodes)
@@ -24,34 +26,33 @@ ___
   - [queryEachAll](#a)
   - [queryAll](#a)
 ___
-##### [Text](#)
-> Animation helpers
-  - [textContent](#textcontent)   Safe writes
-___
-##### [Sanitization](#)
-> Animation helpers
+
+##### [Sanitization](#Sanitization)
+> Clean values for safe outputs
   - [sanitizeText](#sanitizetext)
   - [sanitizeMarkup](#sanitizemarkup)
 ___ 
-##### [Batched Asynchronous Reads and Writes](#)
-> Animation helpers
+
+##### [Batched Asynchronous Reads and Writes](#batched)
+> Batch DOM reads and writes
   - [kill](#)
   - [measure](#)
   - [mutate](#)
 ___
 
-##### [Styling](#)
-> Animation helpers
+##### [Styling and Content](#styling-and-content)
+> Shorthand styling methods
   - [style](#style)
   - [swap] 
   - [toggle](#toggle)
   - [cycle](#cycle)
   - [elevate]
   - [format](#format)
+  - [textContent](#textcontent)   Safe writes
 ___
 
-##### [Shorthand](#)
-> Animation helpers
+##### [Dimensional](#shorthand)
+> Shorthand dimensional methods
   - [computedStyle](#) `= (element, propery) => window.getComputedStyle(element, null).getPropertyValue(property)`
   - [dimensions](#) `= (element, propery) => element.getBoundingClientRect()[property]`
 ___
