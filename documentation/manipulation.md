@@ -43,10 +43,10 @@ ___
 ##### [Styling and Content](#styling-and-content)
 > Shorthand styling methods
   - [style](#style)
-  - [swap] 
+  - [swap](#a)
   - [toggle](#toggle)
   - [cycle](#cycle)
-  - [elevate]
+  - [elevate](#a)
   - [format](#format)
   - [textContent](#textcontent)   Safe writes
 ___
