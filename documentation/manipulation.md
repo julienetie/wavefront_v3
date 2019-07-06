@@ -1,37 +1,60 @@
-# API
+##### [Manipulation API](#manipulation)
+> Methods for manipulating the DOM
 
-##### [Wavefront API](#wavefront-api)
+##### [Animations](#animations)
+> Animation helpers
+  - [transitionEnd](#transitionend)
+  - [observeMutation](#observemutation)
+___
+##### [Nodes and Elements](#nodes-and-elements)
+> Animation helpers
+  - [transitionEnd](#transitionend)
+  - [observeMutation](#observemutation)
+___
+##### [Array Collections](#array-collections)
+> Animation helpers
+  - [childNodes](#childNodes)
+  - [children](#children)
+  - [descendent](#descendent)
+  - [eachClosest](#eachClosest)
+  - [eachContains](#eachContains)
+  - [siblings](#siblings)
+  - [siblingsEntries](#siblingsEntries)
+  - [queryEach](#queryEach)
+  - [queryEachAll](#a)
+  - [queryAll](#a)
+___
+##### [Text](#)
+> Animation helpers
+  - [textContent](#textcontent)   Safe writes
+___
+##### [Sanitization](#)
+> Animation helpers
+  - [sanitizeText](#sanitizetext)
+  - [sanitizeMarkup](#sanitizemarkup)
+___ 
+##### [Batched Asynchronous Reads and Writes](#)
+> Animation helpers
+  - [kill](#)
+  - [measure](#)
+  - [mutate](#)
+___
 
-###### Array Collections
-- [childNodes](#childNodes)
-- [children](#children)
-- [descendent](#descendent)
-- [eachClosest](#eachClosest)
-- [eachContains](#eachContains)
-- [siblings](#siblings)
-- [siblingsEntries](#siblingsEntries)
-- [queryEach](#queryEach)
-- [queryEachAll]
-- [queryAll]
+##### [Styling](#)
+> Animation helpers
+  - [style](#style)
+  - [swap] 
+  - [toggle](#toggle)
+  - [cycle](#cycle)
+  - [elevate]
+  - [format](#format)
+___
 
-###### Element Creation and Management
-- [wave](#wave)
-
-###### Batched Asynchronous Reads and Writes
-- [kill]
-- [read]
-- [write]
-
-###### Styling Helpers
-- [style]
-- [swap] 
-- [toggle]
-- [cycle]
-- [elevate]
-
-###### Shorthand 
-- computedStyle `= (element, propery) => window.getComputedStyle(element, null).getPropertyValue(property)`
-- measure `= (element, propery) => element.getBoundingClientRect()[property]`
+##### [Shorthand](#)
+> Animation helpers
+  - [computedStyle](#) `= (element, propery) => window.getComputedStyle(element, null).getPropertyValue(property)`
+  - [dimensions](#) `= (element, propery) => element.getBoundingClientRect()[property]`
+___
 
 # Wavefront API
 <img src="https://github.com/julienetie/img/blob/master/wavefront-small.pdf.png?raw=true"/> 
