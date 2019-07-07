@@ -201,7 +201,7 @@ const items = eachContains(parents,'.test1', '.test2', true); // [[[<A1>],[<A2>]
 ##### _Returns an array of siblings_
 > * @param {Element} element
 > * @return {Array} sibling
-
+ 
 ###### Example:
 
 ```javascript
